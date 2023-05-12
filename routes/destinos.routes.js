@@ -12,8 +12,12 @@ router.get("/", (req, res, next) => {
     .select({ image: 1, title: 1, lider: 1, date: 1 })
     .then((allDestines) => {
       console.log(allDestines);
+      allDestines.forEach((eachDestino)=>{
+        eachDestino.formatedDate = eachDestino.date.toLocaleDateString('Sp-SP', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
+      })
       res.render("destinos/lista-destinos.hbs", {
         allDestines,
+        
       });
     })
     .catch((error) => {
@@ -62,9 +66,11 @@ router.get("/:destinoId", (req,res, next)=>{
   Destino.findById(req.params.destinoId)
   .populate("lider")
   .then((allDetails)=>{
-   console.log("aquiii",allDetails.date.toLocaleDateString('Sp-SP', { weekday:"long", year:"numeric", month:"short", day:"numeric"}));
+    const formatDate = allDetails.date.toLocaleDateString('Sp-SP', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
+    console.log(allDetails);
    res.render("destinos/detalles-destino.hbs",{
-    allDetails
+    allDetails,
+    formatDate
    })
      
   })
