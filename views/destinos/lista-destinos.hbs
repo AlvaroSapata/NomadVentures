@@ -1,1 +1,17 @@
-<div><h1>asdasdas</h1></div>
+<div>
+
+<h2>Expediciones</h2>
+
+<div>
+
+    {{#each allDestines}}
+    <img src="{{this.image}}" alt="image">
+    <h2>{{this.title}}</h2>
+    <hr>
+    <h3>{{this.lider.firstName}}</h3>
+    <h4>{{this.date}}</h4>
+     <a href="/destinos/{{this._id}}">detalles</a>
+    {{/each}}
+</div>
+
+</div>
