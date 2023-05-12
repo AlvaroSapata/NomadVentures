@@ -10,8 +10,8 @@ router.get("/", (req, res, next) => {
 const viajeRouter = require("./destinos.routes")
 router.use("/destinos", viajeRouter);
 
- const authRouter = require("./auth.routes")
-  router.use("/auth", authRouter)
+const authRouter = require("./auth.routes")
+router.use("/auth", authRouter)
 
 
 

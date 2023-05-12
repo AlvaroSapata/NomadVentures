@@ -1,0 +1,44 @@
+<div class="formulario">
+
+  <h3 class="tituloregistro">Crear Destino</h3>
+
+  <form action="/destinos/crear" method="post">
+    <div class="mb-3">
+      <label for="title" class="form-label">Titulo</label>
+      <input type="text" class="form-control" name="title" />
+    </div>
+
+    <div class="mb-3">
+      <label for="price" class="form-label">Precio</label>
+      <input type="number" class="form-control" name="price" />
+    </div>
+
+    <div class="mb-3">
+      <label for="date" class="form-label">Fecha</label>
+      <input type="date" class="form-control" name="date" />
+    </div>
+
+    <div class="mb-3">
+      <label for="maxPeople" class="form-label">Plazas</label>
+      <input type="number" class="form-control" name="maxPeople" />
+    </div>
+
+    <div class="mb-3">
+      <label for="details" class="form-label">Detalles del viaje</label>
+      <input type="text" class="form-control" name="details" />
+      <div id="detailslHelp" class="form-text">Añade una breve descripcion del
+        viaje.</div>
+    </div>
+
+    {{! METER IMAGEN  }}
+        <div class="mb-3">
+      <label for="image" class="form-label">Imagen</label>
+      <input type="file" class="form-control" name="image" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registrar</button>
+    {{#if this.errorMessage}}
+      <p style="color: red">{{this.errorMessage}}</p>
+    {{/if}}
+  </form>
+</div>
