@@ -15,3 +15,9 @@ h1 {
   color: 15px;
 }
 
+.Lista-destinos{
+  display: flex;
+  flex-direction: row;
+  
+}
+
