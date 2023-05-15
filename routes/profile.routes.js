@@ -11,9 +11,10 @@ router.get("/", async (req, res, next) => {
     // Buscar todos los destinos
     const allDestines = await Destino.find({
       lider: req.session.infoSesionUser._id,
+      
     });
 
-    /* console.log("allDestines: ", allDestines); */
+    
 
     res.render("profile/profile.hbs", {
       allDestines,

@@ -4,6 +4,6 @@
 <h3>Viajes a los que me he apuntado</h3>
 <h3>Viajes que he creado</h3>
 {{#each this.allDestines}}
-<li><img src="{{this.image}}" alt="image" width="200px"> <br> {{this.title}} <a href="/destinos/{{this._id}}/edit"><button>editar</button></a></li>
+<li><img src="{{this.image}}" alt="image" width="200px"> <br> {{this.title}} {{this.isValidated}} <a href="/destinos/{{this._id}}/edit"><button>editar</button></a></li>
 {{/each}}
 </div>

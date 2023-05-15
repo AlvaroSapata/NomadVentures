@@ -10,7 +10,7 @@ const uploader = require("../middlewares/uploader.js");
 
 // GET "/destinos" => Renderizar la lista de destinos
 router.get("/", (req, res, next) => {
-  Destino.find()
+  Destino.find({ isValidated: "aceptado" })
     .populate("lider")
     .select({ image: 1, title: 1, lider: 1, date: 1 })
     .then((allDestines) => {
@@ -89,9 +89,11 @@ router.get("/:destinoId", (req, res, next) => {
 router.get("/:destinoId/edit", (req, res, next) => {
   Destino.findById(req.params.destinoId)
     .then((destinoDetails) => {
+      //  destinoDetails.date = destinoDetails.date.toLocaleDateString("Sp-SP");
       console.log(destinoDetails);
       res.render("destinos/editar-destino.hbs", {
         destinoDetails,
+        
       });
     })
     .catch((error) => {
@@ -105,13 +107,14 @@ router.post("/:destinoId/edit", async (req, res, next) => {
   try {
     const { title, price, date, maxPeople, details, image } = req.body;
     const response = await Destino.findByIdAndUpdate(
-      req.params.destinoId,
+      req.params.destinoId, 
       {
         title,
         price,
         date,
         maxPeople,
         details,
+        isValidated: "pendiente"
       },
       { new: true }
     );
@@ -127,12 +130,21 @@ router.post(
   uploader.single("image"),
   async (req, res, next) => {
     //todo : que no de fallo al pulsar / DOM visibilidad del boton
-    // if (req.file === undefined) {
-    //   res.render("destinos/editar-destino.hbs", {
-    //     errorImageMessage: "todo mal"
-    //     ,})
-    //   /* next("no hay imagen"); */
-    // return;}
+    if (req.file === undefined) {
+      try{
+        const destinoDetails = await Destino.findById(req.params.destinoId)
+        
+        res.render("destinos/editar-destino.hbs", {
+          errorImageMessage: "Para actualizar la foto debes seleccionar un archivo",
+          destinoDetails
+        });
+
+      } catch(error){
+        next(error)
+      }
+      
+      return;
+    }
     try {
       const response = await Destino.findByIdAndUpdate(
         req.params.destinoId,

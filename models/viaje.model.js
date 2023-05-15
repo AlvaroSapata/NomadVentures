@@ -31,7 +31,9 @@ const destinoSchema = new Schema({
     required: false,
   },
   isValidated:{
-    type : Boolean,
+    type : String,
+    enum: ["pendiente", "rechazado", "aceptado"] ,
+    default: "pendiente"
   }
 });
 
