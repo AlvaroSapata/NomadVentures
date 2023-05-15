@@ -1,0 +1,94 @@
+<div class="formulario">
+
+  <h3 class="tituloregistro">Editar Destino</h3>
+
+  <form
+    action="/destinos/{{this.destinoDetails._id}}/edit/image"
+    method="post"
+    enctype="multipart/form-data"
+  >
+
+  <img src="{{this.destinoDetails.image}}" alt="image" width="200px">
+    <div class="mb-3">
+      <label for="image" class="form-label"></label>
+      <input type="file" class="form-control" name="image" />
+    </div>
+    {{#if this.errorMessage}}
+      <p style="color: red">{{this.errorImageMessage}}</p>
+    {{/if}}
+    <button type="submit" class="btn btn-primary">Actualizar imagen</button>
+  </form>
+
+  <form
+    action="/destinos/{{this.destinoDetails._id}}/edit"
+    method="post"
+    {{! enctype="multipart/form-data" }}
+  >
+    <div class="mb-3">
+      <label for="title" class="form-label">Titulo</label>
+      <input
+        type="text"
+        class="form-control"
+        name="title"
+        value="{{this.destinoDetails.title}}"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="price" class="form-label">Precio</label>
+      <input
+        type="number"
+        class="form-control"
+        name="price"
+        value="{{this.destinoDetails.price}}"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="date" class="form-label">Fecha</label>
+      <input
+        type="date"
+        class="form-control"
+        name="date"
+        {{!-- value="{{this.destinoDetails.date}}" --}}
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="maxPeople" class="form-label">Plazas</label>
+      <input
+        type="number"
+        class="form-control"
+        name="maxPeople"
+        value="{{this.destinoDetails.maxPeople}}"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="details" class="form-label">Detalles del viaje</label>
+      <input
+        type="text"
+        class="form-control"
+        name="details"
+        value="{{this.destinoDetails.details}}"
+      />
+      <div id="detailslHelp" class="form-text">Añade una breve descripcion del
+        viaje.</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+
+    {{#if this.errorMessage}}
+      <p style="color: red">{{this.errorMessage}}</p>
+    {{/if}}
+  </form>
+
+  <form
+    class="btn bnt-danger"
+    action="/destinos/{{this.destinoDetails._id}}/delete"
+    method="post"
+  >
+    <button type="submit" class="btn btn-primary">Borrar</button>
+  </form>
+
+</div>

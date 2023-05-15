@@ -1,12 +1,17 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: black;
+  color: white;
 }
 
-a {
+nav a {
   color: #00b7ff;
+  text-decoration: none;
+  margin: 10px;
 }
 
 h1 {
   color: 15px;
 }
+

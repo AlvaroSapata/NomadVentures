@@ -30,6 +30,9 @@ const destinoSchema = new Schema({
     type: String,
     required: false,
   },
+  isValidated:{
+    type : Boolean,
+  }
 });
 
 const Destino = model("Destino", destinoSchema);
