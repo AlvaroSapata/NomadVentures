@@ -31,7 +31,7 @@ router.get("/", (req, res, next) => {
 });
 
 // GET "/destinos/crear" => Renderiza el formulario de destinos
-router.get("/crear",isLoggedIn, isAdmin, isGuia, (req, res, next) => {
+router.get("/crear",isLoggedIn, isGuia, (req, res, next) => {
 /*   console.log("ES ESTEE", req.file); */
   res.render("destinos/crear-destino.hbs");
 });
@@ -86,7 +86,7 @@ router.get("/:destinoId", (req, res, next) => {
 });
 
 // GET "/destinos/:destinoId/edit" => crea el formulario para editar detalles del destino
-router.get("/:destinoId/edit", (req, res, next) => {
+router.get("/:destinoId/edit",  isAdmin, isGuia, (req, res, next) => {
   Destino.findById(req.params.destinoId)
     .then((destinoDetails) => {
       console.log(destinoDetails.date.toLocaleDateString("Sp-SP"));
@@ -172,5 +172,28 @@ router.post("/:destinoId/delete", (req, res, next) => {
       next(error);
     });
 });
+
+router.post("/prueba", (req,res, next)=>{
+  Destino.find({ isValidated: "aceptado" })
+  .populate("lider")
+  .select({ image: 1, title: 1, lider: 1, date: 1 })
+  .sort({precio: 1})
+  .then((allDestines) => {
+/*       console.log(allDestines); */
+    allDestines.forEach((eachDestino) => {
+      eachDestino.formatedDate = eachDestino.date.toLocaleDateString(
+        "Sp-SP",
+        { weekday: "long", year: "numeric", month: "short", day: "numeric" }
+      );
+    });
+    res.render("destinos/lista-destinos.hbs", {
+      allDestines,
+    });
+  })
+  .catch((error) => {
+    next(error);
+  });
+
+})
 
 module.exports = router;
