@@ -3,9 +3,13 @@ const router = express.Router();
 
 const Destino = require("../models/viaje.model.js");
 const User = require("../models/user.model.js");
+const uploader = require("../middlewares/uploader.js");
+
+//Requerir los middlewares
+const {isLoggedIn, isAdmin, isGuia, isUsuario} = require("../middlewares/auth.middleware.js");
 
 // GET "/admin/validate" => Renderizar la lista de destinos por validar
-router.get("/validate", (req, res, next) => {
+router.get("/validate", isAdmin,(req, res, next) => {
     Destino.find({ isValidated: "pendiente" })
       .populate("lider")
       .select({ image: 1, title: 1, lider: 1, date: 1 })
@@ -27,7 +31,7 @@ router.get("/validate", (req, res, next) => {
   });
 
 // GET "/admin/:destinoId/validate" => Detalles del destino
-router.get("/:destinoId/validate", (req, res, next) => {
+router.get("/:destinoId/validate", isAdmin, (req, res, next) => {
   Destino.findById(req.params.destinoId)
     .populate("lider")
     .then((allDetails) => {
@@ -75,7 +79,7 @@ router.post("/:destinoId/validate/denegar", (req, res, next) => {
 })
 
 // GET "/admin/userlist" => Renderiza la lista de usuarios
-router.get("/userlist",(req,res,next)=>{
+router.get("/userlist", isAdmin,(req,res,next)=>{
   User.find()
   .select({firstName:1,lastName:1,email:1,phone:1,rol:1})
   .then((allUsers)=>{

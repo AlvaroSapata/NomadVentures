@@ -11,6 +11,11 @@
 
 <h1>LIDERES DE EXPEDICION</h1>
 
-
+{{#each}}
+<li>
+    <img src="{{this.allUsers.image}}" alt="image">
+    <h3>{{this.allUsers.lider}}</h3>
+</li>
+{{/each}}
 
 </div>
