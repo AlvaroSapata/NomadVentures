@@ -1,7 +1,8 @@
 <div class="formulario">
-
-  <h3 class="tituloregistro">Formulario de Registro</h3>
-
+  <div class="titulo-registro">
+  <img src="/images/logo.png" alt="icono" width="30px" height="30px">
+  <h3 class="tituloregistro">Bienvenido a NomadVentures</h3>
+</div>
 <form action="/auth/signup" method="post">
   <div class="mb-3">
     <label for="firstName" class="form-label">Nombre</label>
@@ -43,9 +44,6 @@
     Usuario
   </label>
 </div>
-
-{{!-- METER IMAGEN  --}}
-
 
    <button type="submit" class="btn btn-primary">Registrar</button>
       {{#if this.errorMessage}}
