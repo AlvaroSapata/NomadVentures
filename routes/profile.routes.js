@@ -40,6 +40,7 @@ router.get("/:userId/edit", (req, res, next) => {
     });
 });
 
+
 // POST "/profile/:userId/edit" => Envia el formulario para editar detalles del usuario
 router.post("/:userId/edit", async (req, res, next) => {
   try {
