@@ -16,7 +16,7 @@ router.get("/", async (req, res, next) => {
     const userDetails = await User.findById(req.session.loggedUser._id);
     // console.log("req.session.loggedUser",req.session.loggedUser);
     // console.log("allDestines",allDestines);
-    console.log("userDetails",userDetails);
+    console.log("userDetails", userDetails);
     res.render("profile/profile.hbs", {
       allDestines,
       userDetails,
@@ -40,7 +40,6 @@ router.get("/:userId/edit", (req, res, next) => {
     });
 });
 
-
 // POST "/profile/:userId/edit" => Envia el formulario para editar detalles del usuario
 router.post("/:userId/edit", async (req, res, next) => {
   try {
@@ -61,6 +60,52 @@ router.post("/:userId/edit", async (req, res, next) => {
     next(error);
   }
 });
+
+router.get("/:userId/image", (req, res, next) => {
+  User.findById(req.params.userId)
+  .then((userDetails)=>{
+    res.render("profile/edit-foto.hbs",{
+      userDetails
+    });
+    
+  })
+  .catch((error)=>{
+    next((error))
+  })
+});
+
+router.post("/:userId/image",uploader.single("image"),async (req, res, next) => {
+    if (req.file === undefined) {
+      try {
+        const userDetails = await User.findById(req.params.userId);
+
+        res.render("profile/edit-foto.hbs", {
+          errorImageMessage:
+            "Para actualizar la foto debes seleccionar un archivo",
+          userDetails,
+        });
+        
+      } catch (error) {
+        next(error);
+      }
+
+      return;
+    }
+    try {
+      const userDetails = await User.findByIdAndUpdate(
+        req.params.userId,
+        {
+          image: req.file.path,
+        },
+        { new: true }
+      );
+      console.log("holaa", userDetails);
+      res.redirect("/profile");
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 
 // // POST "/destinos/:destinoId/edit/image" => Envia el formulario para editar detalles del destino
 // router.post(

@@ -1,3 +1,30 @@
+
+
+<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+ 
+
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      Filtra por precio
+    </button>
+    <ul class="dropdown-menu">
+      <li>
+        <form action="/destinos/mayorMenor" method="post">
+          <button class="dropdown-item" type="submit">Descendente</button>
+        </form>
+      </li>
+      <li>
+        <form action="/destinos/menorMayor" method="post">
+          <button class="dropdown-item" type="submit">Ascendente</button>
+        </form>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+
 <h2>Expediciones</h2>
 
 <div class="Lista-destinos">
@@ -28,6 +55,10 @@
             <li class="list-group-item">
               {{this.lider.firstName}}
               {{this.lider.lastName}}
+            </li>
+
+            <li class="list-group-item">
+              {{this.price}} €
             </li>
 
             <li class="list-group-item">

@@ -10,7 +10,7 @@ function isLoggedIn(req, res, next) {
 }
 // El usuario es admin
 function isAdmin(req, res, next) {
-  if (req.session.loggedUser.role === "admin") {
+  if (req.session.loggedUser.rol === "admin") {
     next();
   } else {
     res.redirect("/");
@@ -18,7 +18,7 @@ function isAdmin(req, res, next) {
 }
 // El usuario es guia
 function isGuia(req, res, next) {
-  if (req.session.loggedUser.role === "guia") {
+  if (req.session.loggedUser.rol === "guia") {
     next();
   } else {
     res.redirect("/");
@@ -26,7 +26,15 @@ function isGuia(req, res, next) {
 }
 // El usuario es usuario
 function isUsuario(req, res, next) {
-  if (req.session.loggedUser.role === "usuario") {
+  if (req.session.loggedUser.rol === "usuario") {
+    next();
+  } else {
+    res.redirect("/");
+  }
+}
+
+function isGuiaOrAdmin(req, res, next) {
+  if (req.session.loggedUser.rol === "guia" || req.session.loggedUser.rol === "admin") {
     next();
   } else {
     res.redirect("/");
@@ -78,4 +86,5 @@ module.exports = {
   isAdmin: isAdmin,
   isGuia: isGuia,
   isUsuario: isUsuario,
+  isGuiaOrAdmin: isGuiaOrAdmin
 };

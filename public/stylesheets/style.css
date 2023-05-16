@@ -8,9 +8,10 @@ nav{
   background-color: #6f6c62;
   width: auto;
   border-radius: 100px;
-  position: sticky;
+  /* position: sticky; */
   top: 0;
   padding: 8px;
+  z-index: 1;
 
 }
 

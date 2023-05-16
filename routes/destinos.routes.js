@@ -6,13 +6,14 @@ const User = require("../models/user.model.js");
 const uploader = require("../middlewares/uploader.js");
 
 //Requerir los middlewares
-const {isLoggedIn, isAdmin, isGuia, isUsuario} = require("../middlewares/auth.middleware.js");
+const {isLoggedIn, isAdmin, isGuia, isUsuario, isGuiaOrAdmin} = require("../middlewares/auth.middleware.js");
 
 // GET "/destinos" => Renderizar la lista de destinos
 router.get("/", (req, res, next) => {
   Destino.find({ isValidated: "aceptado" })
+  
     .populate("lider")
-    .select({ image: 1, title: 1, lider: 1, date: 1 })
+    .select({ image: 1, title: 1, lider: 1, date: 1, price: 1 })
     .then((allDestines) => {
 /*       console.log(allDestines); */
       allDestines.forEach((eachDestino) => {
@@ -24,6 +25,7 @@ router.get("/", (req, res, next) => {
       res.render("destinos/lista-destinos.hbs", {
         allDestines,
       });
+      console.log("por aquiiiii", allDestines)
     })
     .catch((error) => {
       next(error);
@@ -31,7 +33,7 @@ router.get("/", (req, res, next) => {
 });
 
 // GET "/destinos/crear" => Renderiza el formulario de destinos
-router.get("/crear",isLoggedIn, isGuia, (req, res, next) => {
+router.get("/crear",isLoggedIn, isGuiaOrAdmin, (req, res, next) => {
 /*   console.log("ES ESTEE", req.file); */
   res.render("destinos/crear-destino.hbs");
 });
@@ -173,11 +175,37 @@ router.post("/:destinoId/delete", (req, res, next) => {
     });
 });
 
-router.post("/prueba", (req,res, next)=>{
+router.post("/mayorMenor", (req,res, next)=>{
   Destino.find({ isValidated: "aceptado" })
   .populate("lider")
-  .select({ image: 1, title: 1, lider: 1, date: 1 })
-  .sort({precio: 1})
+  .select({ image: 1, title: 1, lider: 1, date: 1, price:1 })
+ .sort({price: -1})
+  .then((allDestines) => {
+/*       console.log(allDestines); */
+    allDestines.forEach((eachDestino) => {
+      eachDestino.formatedDate = eachDestino.date.toLocaleDateString(
+        "Sp-SP",
+        { weekday: "long", year: "numeric", month: "short", day: "numeric" }
+      );
+    });
+
+     
+    res.render("destinos/lista-destinos.hbs", {
+      allDestines,
+    });
+  })
+  .catch((error) => {
+    next(error);
+  });
+
+})
+
+
+router.post("/menorMayor", (req,res, next)=>{
+  Destino.find({ isValidated: "aceptado" })
+  .populate("lider")
+  .select({ image: 1, title: 1, lider: 1, date: 1, price:1 })
+  .sort({price: 1})
   .then((allDestines) => {
 /*       console.log(allDestines); */
     allDestines.forEach((eachDestino) => {

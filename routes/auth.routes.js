@@ -56,7 +56,7 @@ router.post("/signup", async (req, res, next) => {
       password: hashPassword,
       phone,
       rol,
-      image,
+      image: "https://res.cloudinary.com/djgrykzle/image/upload/v1684254110/nomaDventures/krxc3x1oowdunl7sggvm.png"
     });
 
     res.redirect("/auth/login");
