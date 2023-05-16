@@ -1,8 +1,15 @@
 <div>
-<h1>perfil</h1>
-
+<h1>Mi Perfil</h1>
+<h5>Usuario: {{this.userDetails.firstName}} {{this.userDetails.lastName}}</h5>
+<h5>Email: {{this.userDetails.email}}</h5>
+<h5>Telefono: {{this.userDetails.phone}}</h5>
+<h5>Rol: {{this.userDetails.rol}}</h5>
+<a href="/profile/{{this.userDetails._id}}/edit"><button>editar</button></a>
+<hr>
 <h3>Viajes a los que me he apuntado</h3>
+<hr>
 <h3>Viajes que he creado</h3>
+
 {{#each this.allDestines}}
 <li><img src="{{this.image}}" alt="image" width="200px"> <br> {{this.title}} {{this.isValidated}} <a href="/destinos/{{this._id}}/edit"><button>editar</button></a></li>
 {{/each}}

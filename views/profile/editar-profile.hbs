@@ -1,0 +1,82 @@
+<div class="formulario">
+
+  <h3 class="tituloregistro">Editar Datos de Usuario</h3>
+
+  {{!-- <form
+    action="/destinos/{{this.destinoDetails._id}}/edit/image"
+    method="post"
+    enctype="multipart/form-data"
+  >
+
+  <img src="{{this.destinoDetails.image}}" alt="image" width="200px">
+    <div class="mb-3">
+      <label for="image" class="form-label"></label>
+      <input type="file" class="form-control" name="image" />
+    </div>
+    {{#if this.errorImageMessage}}
+      <p style="color: red">{{this.errorImageMessage}}</p>
+    {{/if}}
+    <button type="submit" class="btn btn-primary">Actualizar imagen</button>
+  </form> --}}
+
+  <form
+    action="/profile/{{this.userDetails._id}}/edit"
+    method="post"
+  >
+    <div class="mb-3">
+      <label for="firstName" class="form-label">Nombre </label>
+      <input
+        type="text"
+        class="form-control"
+        name="firstName"
+        value="{{this.userDetails.firstName}}"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Apellido</label>
+      <input
+        type="text"
+        class="form-control"
+        name="lastName"
+        value="{{this.userDetails.lastName}}"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">email</label>
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        value="{{this.userDetails.email}}"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="phone" class="form-label">telefono</label>
+      <input
+        type="number"
+        class="form-control"
+        name="phone"
+        value="{{this.userDetails.phone}}"
+      />
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+
+{{!--     {{#if this.errorMessage}}
+      <p style="color: red">{{this.errorMessage}}</p>
+    {{/if}} --}}
+  </form>
+
+  {{!-- <form
+    class="btn bnt-danger"
+    action="/destinos/{{this.destinoDetails._id}}/delete"
+    method="post"
+  >
+    <button type="submit" class="btn btn-primary">Borrar</button>
+  </form> --}}
+
+</div>
