@@ -2,21 +2,37 @@
 
 <h1>ACERCA DE</h1>
 
-<p>comienza una nueva aventura</p>
+<p>El momento es AHORA. 
+    <br>
+    Comienza a recorrer y conocer nuestro planeta y todas sus culturas como un auténtico aventurero.</p>
 
 <h1>Nuestra filosofia</h1>
 
-<p>vida de nomadassssssssss</p>
+<p>Destinos únicos, lugares pocos transitados, culturas desconocidas y formas de viajar originales y pioneras.
+    <br>
+
+Desde nuestra visión existe un factor tan importante como el destino, y es quién te acompañará y guiará en tu aventura. Por eso contamos con nuestros Líderes de Expedición, quienes entienden y conocen cada destino como nadie lo ha hecho hasta el momento.
+<br>
+
+Vivir una experiencia como esta significa quitarse el traje el turista y convertirse en uno más del lugar, solo así podréis descubrir y vivir los territorios que visitamos. A través del contacto con estos nuevos medios y el compromiso con cada una de las comunidades que nos reciben, devolvemos al mundo un poco de todo aquello que nos brinda: conocimiento, empatía, emociones o conciencia.
+<br>
+
+Si lo que buscas es salir de la zona de confort para explorar las regiones más auténticas de todo el mundo acompañando de otras personas aventureras como tú, estás en el lugar correcto.</p>
 
 
 <h1>LIDERES DE EXPEDICION</h1>
 
+<div class="prueba-lideres">
 {{#each this.allUsers}}
-<li>
-    <img src="{{this.image}}" alt="image">
-    <h3>{{this.firstName}}</h3>
-    <h3>{{this.lastName}}</h3>
-</li>
+<div class="card" style="width: 18rem;">
+  <img src="{{this.image}}" class="card-img-top" alt="image">
+  <div class="card-body">
+    <h5 class="card-title">{{this.firstName}}</h5>
+    <p class="card-text">{{this.lastName}}</p>
+  </div>
+</div>
 {{/each}}
+</div>
 
 </div>
+

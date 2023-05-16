@@ -50,3 +50,9 @@ h1 {
   background-color: black;
   color: white;
 }
+
+.prueba-lideres{
+  display: flex;
+  gap: 10px;
+}
+
