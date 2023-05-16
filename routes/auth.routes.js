@@ -9,8 +9,9 @@ router.get("/signup", (req, res, next) => {
   res.render("auth/signup.hbs");
 });
 
+// POST "/auth/signup" => Envia el formulario de registro
 router.post("/signup", async (req, res, next) => {
-  console.log(req.body);
+  /* console.log(req.body); */
   const { firstName, lastName, email, password, phone, rol, image } = req.body;
   const regexPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
   //! añadir imagen
@@ -47,7 +48,6 @@ router.post("/signup", async (req, res, next) => {
 
     const salt = await bcrypt.genSalt(12);
     const hashPassword = await bcrypt.hash(password, salt);
-    console.log("LA CONTRASEÑA ENCRITADA ES", hashPassword);
 
     await User.create({
       firstName,
@@ -65,10 +65,12 @@ router.post("/signup", async (req, res, next) => {
   }
 });
 
+// GET "/auth/login" => Renderizar un formulario de acceso
 router.get("/login", (req, res, next) => {
   res.render("auth/login.hbs");
 });
 
+// POST "/auth/login" => Envia un formulario de acceso
 router.post("/login", async (req, res, next) => {
   const { email, password } = req.body;
   if (email === "" || password === "") {
@@ -98,16 +100,18 @@ router.post("/login", async (req, res, next) => {
       return;
     }
 
-    req.session.infoSesionUser = foundUser;
+    req.session.loggedUser = foundUser;
 
     req.session.save(() => {
       res.redirect("/");
     });
+  
   } catch (error) {
     next(error);
   }
 });
 
+// GET "/auth/logout" => Destruye la sesion activa
 router.get("/logout",(req,res,next)=>{
   req.session.destroy(()=>{
     res.redirect("/")

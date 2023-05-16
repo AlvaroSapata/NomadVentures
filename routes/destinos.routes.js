@@ -5,8 +5,8 @@ const Destino = require("../models/viaje.model.js");
 const User = require("../models/user.model.js");
 const uploader = require("../middlewares/uploader.js");
 
-//todo : que no de fallo al pulsar / DOM visibilidad del boton
-/* const UpdateBtnDOM = document.querySelector() */
+//Requerir los middlewares
+const {isLoggedIn, isAdmin, isGuia, isUsuario} = require("../middlewares/auth.middleware.js");
 
 // GET "/destinos" => Renderizar la lista de destinos
 router.get("/", (req, res, next) => {
@@ -14,7 +14,7 @@ router.get("/", (req, res, next) => {
     .populate("lider")
     .select({ image: 1, title: 1, lider: 1, date: 1 })
     .then((allDestines) => {
-      console.log(allDestines);
+/*       console.log(allDestines); */
       allDestines.forEach((eachDestino) => {
         eachDestino.formatedDate = eachDestino.date.toLocaleDateString(
           "Sp-SP",
@@ -31,14 +31,14 @@ router.get("/", (req, res, next) => {
 });
 
 // GET "/destinos/crear" => Renderiza el formulario de destinos
-router.get("/crear", (req, res, next) => {
-  console.log("ES ESTEE", req.file);
+router.get("/crear",isLoggedIn, isAdmin, isGuia, (req, res, next) => {
+/*   console.log("ES ESTEE", req.file); */
   res.render("destinos/crear-destino.hbs");
 });
 
 // POST "/destinos/crear" => Crea el formulario de destinos
 router.post("/crear", uploader.single("image"), async (req, res, next) => {
-  console.log(req.session.infoSesionUser);
+  console.log(req.session.loggedUser);
   const { title, price, date, maxPeople, details, isValidated } = req.body;
   if (req.file === undefined) {
     next("no hay imagen");
@@ -50,7 +50,7 @@ router.post("/crear", uploader.single("image"), async (req, res, next) => {
       price,
       date,
       maxPeople,
-      lider: req.session.infoSesionUser._id,
+      lider: req.session.loggedUser._id,
       details,
       image: req.file.path,
       isValidated,
@@ -74,7 +74,7 @@ router.get("/:destinoId", (req, res, next) => {
         month: "short",
         day: "numeric",
       });
-      console.log(allDetails);
+/*       console.log(allDetails); */
       res.render("destinos/detalles-destino.hbs", {
         allDetails,
         formatDate,
@@ -89,10 +89,13 @@ router.get("/:destinoId", (req, res, next) => {
 router.get("/:destinoId/edit", (req, res, next) => {
   Destino.findById(req.params.destinoId)
     .then((destinoDetails) => {
-      //  destinoDetails.date = destinoDetails.date.toLocaleDateString("Sp-SP");
+      console.log(destinoDetails.date.toLocaleDateString("Sp-SP"));
+      formatedDate = destinoDetails.date.toISOString().slice(0,10);
       console.log(destinoDetails);
+      console.log(formatedDate);
       res.render("destinos/editar-destino.hbs", {
         destinoDetails,
+        formatedDate,
         
       });
     })
@@ -103,7 +106,7 @@ router.get("/:destinoId/edit", (req, res, next) => {
 
 // POST "/destinos/:destinoId/edit" => Envia el formulario para editar detalles del destino
 router.post("/:destinoId/edit", async (req, res, next) => {
-  console.log("los body", req.body);
+/*   console.log("los body", req.body); */
   try {
     const { title, price, date, maxPeople, details, image } = req.body;
     const response = await Destino.findByIdAndUpdate(
@@ -129,7 +132,6 @@ router.post(
   "/:destinoId/edit/image",
   uploader.single("image"),
   async (req, res, next) => {
-    //todo : que no de fallo al pulsar / DOM visibilidad del boton
     if (req.file === undefined) {
       try{
         const destinoDetails = await Destino.findById(req.params.destinoId)

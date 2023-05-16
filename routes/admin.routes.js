@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 const Destino = require("../models/viaje.model.js");
+const User = require("../models/user.model.js");
 
-// GET "/admin/validate" => Renderizar la lista de destinos
+// GET "/admin/validate" => Renderizar la lista de destinos por validar
 router.get("/validate", (req, res, next) => {
     Destino.find({ isValidated: "pendiente" })
       .populate("lider")
@@ -47,6 +48,7 @@ router.get("/:destinoId/validate", (req, res, next) => {
     });
 });
 
+// POST "/admin/:destinoId/validate/aceptar" => Acepta el destino
 router.post("/:destinoId/validate/aceptar", (req, res, next) => {
   Destino.findByIdAndUpdate(req.params.destinoId, { isValidated: "aceptado"},{new:true})
   .then((allDetails)=>{
@@ -59,6 +61,7 @@ router.post("/:destinoId/validate/aceptar", (req, res, next) => {
     })
 })
 
+// POST "/admin/:destinoId/validate/denegar" => Deniega el destino
 router.post("/:destinoId/validate/denegar", (req, res, next) => {
   Destino.findByIdAndUpdate(req.params.destinoId, { isValidated: "rechazado"},{new:true})
   .then((allDetails)=>{
@@ -71,5 +74,30 @@ router.post("/:destinoId/validate/denegar", (req, res, next) => {
     })
 })
 
+// GET "/admin/userlist" => Renderiza la lista de usuarios
+router.get("/userlist",(req,res,next)=>{
+  User.find()
+  .select({firstName:1,lastName:1,email:1,phone:1,rol:1})
+  .then((allUsers)=>{
+    res.render("admin/lista-usuarios.hbs",{
+      allUsers
+    })
+    
+  })
+  .catch((error)=>{
+    next(error)
+  })
+})
+
+// POST "/admin/userlist/:userId/delete" => Elimina un usuario de la base de datos
+router.post("/userlist/:userId/delete", (req, res, next) => {
+  User.findByIdAndDelete(req.params.userId)
+    .then(() => {
+      res.redirect("/admin/userlist");
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
 
 module.exports = router;

@@ -1,14 +1,33 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  /* background-color: black;
-  color: white; */
+  background-color: black;
+  color: white;
+}
+nav{
+  background-color: #6f6c62;
+  width: auto;
+  border-radius: 100px;
+  position: sticky;
+  top: 0;
+  padding: 8px;
+
 }
 
+nav img{
+  border-radius: 100px;
+}
 nav a {
-  color: #00b7ff;
+  color: #e8e0cd;
   text-decoration: none;
   margin: 10px;
+}
+
+nav a:hover {
+  color: #ffffff; 
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
 }
 
 h1 {
@@ -18,6 +37,15 @@ h1 {
 .Lista-destinos{
   display: flex;
   flex-direction: row;
-  
+
 }
 
+.card{
+  color: black;
+  background-color: #e8e0cd;
+}
+
+.card-body{
+  background-color: black;
+  color: white;
+}

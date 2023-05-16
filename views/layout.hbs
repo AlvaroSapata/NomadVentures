@@ -17,22 +17,81 @@
 
   <body>
 
-<nav>
-  
-    <a href="/"><img src="images/logo.png" alt="icon" height="35px"></a>
-    <a href="/">Inicio</a>
-    <a href="/auth/signup">Registrarse</a>
-    <a href="/auth/login">Acceder</a>
-    <a href="/destinos">Destinos</a>
-    <a href="/destinos/crear">Crear Destino</a>
-    <a href="/auth/logout">Logout</a>
-    <a href="/profile">Perfil</a>
-    <a href="/about">Sobre Nosotros</a>
-    <a href="/admin/validate">validar</a>
-</nav>
+    <nav>
+
+      {{#if this.isUserLogged}}
+        {{#if this.isUserLoggedAsUsuario}}
+          <a href="/"><img
+              src="/images/circuloLogo.png"
+              alt="icon"
+              height="35px"
+            /></a>
+          <a href="/">Inicio</a>
+          <a href="/destinos">Destinos</a>
+
+          <a href="/auth/logout">Logout</a>
+          <a href="/profile">Perfil</a>
+          <a href="/about">Sobre Nosotros</a>
+
+        {{/if}}
+        {{#if this.isUserLoggedAsGuia}}
+          <a href="/"><img
+              src="/images/circuloLogo.png"
+              alt="icon"
+              height="35px"
+            /></a>
+          <a href="/">Inicio</a>
+          <a href="/destinos">Destinos</a>
+          <a href="/destinos/crear">Crear Destino</a>
+
+          <a href="/auth/logout">Logout</a>
+          <a href="/profile">Perfil</a>
+          <a href="/about">Sobre Nosotros</a>
+
+        {{/if}}
+        {{#if this.isUserLoggedAsAdmin}}
+          <a href="/"><img
+              src="/images/circuloLogo.png"
+              alt="icon"
+              height="35px"
+            /></a>
+          <a href="/">Inicio</a>
+          <a href="/destinos">Destinos</a>
+          <a href="/destinos/crear">Crear Destino</a>
+
+          <a href="/auth/logout">Logout</a>
+          <a href="/profile">Perfil</a>
+          <a href="/about">Sobre Nosotros</a>
+          <a href="/admin/validate">validar</a>
+          <a href="/admin/userlist">Lista de usuarios</a>
+        {{/if}}
+
+      {{else}}
+
+        <a href="/"><img
+            src="/images/circuloLogo.png"
+            alt="icon"
+            height="35px"
+          /></a>
+        <a href="/">Inicio</a>
+        <a href="/destinos">Destinos</a>
+
+        <a href="/auth/signup">Registrarse</a>
+        <a href="/auth/login">Acceder</a>
+
+        <a href="/about">Sobre Nosotros</a>
+
+      {{/if}}
+
+    </nav>
+
+    <p>esta logueado:
+      {{this.isUserLogged}}
+      <br />usuario:{{this.isUserLoggedAsUsuario}}
+      <br />guia:{{this.isUserLoggedAsGuia}}
+      <br />admin:{{this.isUserLoggedAsAdmin}}</p>
+
     {{{body}}}
-
-
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
