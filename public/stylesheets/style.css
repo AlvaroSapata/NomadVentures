@@ -79,3 +79,34 @@ h1 {
   border-color: white;
   border-width: 2px;
 } */
+
+.carousel-container {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  top: 400px;
+  margin-bottom: 0;
+  margin-left: 0;
+  padding: 0;
+  left: 380px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;}
+
+  .contenedor-carrusel{
+    width: 1000px;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-top: 50px;
+  }
+
+  .flechas-carrusel{
+    position: relative;
+    bottom: 200px;
+  }

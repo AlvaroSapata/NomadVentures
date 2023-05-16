@@ -20,19 +20,43 @@ Vivir una experiencia como esta significa quitarse el traje el turista y convert
 Si lo que buscas es salir de la zona de confort para explorar las regiones más auténticas de todo el mundo acompañando de otras personas aventureras como tú, estás en el lugar correcto.</p>
 
 
-<h1>LIDERES DE EXPEDICION</h1>
+  <h1>LIDERES DE EXPEDICION</h1>
 
-<div class="prueba-lideres">
-{{#each this.allUsers}}
-<div class="card" style="width: 18rem;">
-  <img src="{{this.image}}" class="card-img-top" alt="image">
-  <div class="card-body">
-    <h5 class="card-title">{{this.firstName}}</h5>
-    <p class="card-text">{{this.lastName}}</p>
+<div class="contenedor-carrusel">
+  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <ol class="carousel-indicators">
+      {{#each this.allUsers}}
+      <li data-bs-target="#carouselExampleInterval" data-bs-slide-to="{{@index}}" {{#if @first}}class="active"{{/if}}></li>
+      {{/each}}
+    </ol>
+    
+    <div class="carousel-inner">
+      {{#each this.allUsers}}
+      <div class="carousel-item {{#if @first}}active{{/if}}" data-bs-interval="{{#if @first}}3000{{else}}3000{{/if}}">
+        <div class="card" style="width: 18rem;">
+          <img src="{{this.image}}" class="card-img-top" alt="image">
+          <div class="card-body">
+            <h5 class="card-title">{{this.firstName}}</h5>
+            <p class="card-text">{{this.lastName}}</p>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
   </div>
 </div>
-{{/each}}
-</div>
+  <div class="flechas-carrusel">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 
-</div>
+
+
+
 
