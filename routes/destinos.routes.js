@@ -45,9 +45,13 @@ router.get("/crear", isLoggedIn, isGuiaOrAdmin, (req, res, next) => {
 router.post("/crear", uploader.single("image"), async (req, res, next) => {
   const { title, price, date, maxPeople, details, isValidated } = req.body;
   if (req.file === undefined) {
-    next("no hay imagen");
+    res.render("destinos/crear-destino.hbs",{
+        errorMessage: "Debes añadir una foto al crear el destino"
+    })
     return;
+   
   }
+ 
   try {
     await Destino.create({
       title,
@@ -87,7 +91,7 @@ router.get("/:destinoId", (req, res, next) => {
 });
 
 // GET "/destinos/:destinoId/edit" => crea el formulario para editar detalles del destino
-router.get("/:destinoId/edit", isAdmin, isGuia, (req, res, next) => {
+router.get("/:destinoId/edit",isLoggedIn,isGuiaOrAdmin, (req, res, next) => {
   Destino.findById(req.params.destinoId)
     .then((destinoDetails) => {
       formatedDate = destinoDetails.date.toISOString().slice(0, 10);
@@ -214,42 +218,40 @@ router.post("/menorMayor", (req, res, next) => {
     });
 });
 
-// POST "/destinos/:destinoId/join" => Añade el destino al array del usuario
-router.post("/:destinoId/join", (req, res, next) => {
-  User.findById(req.session.loggedUser._id)
-
-    .then(() => {
-      let yaApuntado = false;
-      req.session.loggedUser.viajesApuntado.forEach((eachDestino) => {
-        if (eachDestino.includes(req.params.destinoId)) {
-          yaApuntado = true;
-        }
-      });
-      if (yaApuntado === true) {
-        res.render("destinos/detalles-destino.hbs", {
-          errorJoinMessage: "Ya estas apuntado a este viaje",
-        });
-      } /* else if (joinedPeople>=maxPeople) { //! Filtrar que el viaje no este completo
-        res.render("destinos/detalles-destino.hbs", {
-          errorJoinMessage: "El viaje esta completo",
-        });
-      } */ else {
-        User.findByIdAndUpdate(
+router.post("/:destinoId/join", async (req, res, next) => {
+   try{
+    const allDetails = await Destino.findById(req.params.destinoId)
+    console.log(allDetails);
+    if(allDetails.joinedPeople.length>= allDetails.maxPeople){
+      res.render("destinos/detalles-destino.hbs", {
+        errorJoinMessage: "El viaje esta completo",
+        allDetails})
+    }else{
+      try {
+    
+        const userDetails = await User.findByIdAndUpdate(
           req.session.loggedUser._id,
-          { $push: { viajesApuntado: req.params.destinoId } },
+          { $addToSet: { viajesApuntado: req.params.destinoId } },
           { new: true }
-        )
-          .then(() => {
-            res.redirect("/profile");
-          })
-          .catch((error) => {
-            next(error);
-          });
-      }
-    })
-    .catch((error) => {
-      next(error);
-    });
+        );
+
+        const destinoDetails = await Destino.findByIdAndUpdate(
+          req.params.destinoId,
+          { $addToSet: { joinedPeople: req.session.loggedUser._id } },
+          { new: true }
+        );
+
+      
+        res.redirect("/profile");
+      } catch (error) {
+        next(error);
+      }  
+    }
+   }catch (error) {
+    next(error);}
+
+  
 });
+
 
 module.exports = router;

@@ -4,9 +4,16 @@ const router = express.Router();
 const Destino = require("../models/viaje.model.js");
 const User = require("../models/user.model.js");
 const uploader = require("../middlewares/uploader.js");
+const {
+  isLoggedIn,
+  isAdmin,
+  isGuia,
+  isUsuario,
+  isGuiaOrAdmin,
+} = require("../middlewares/auth.middleware.js");
 
 // GET "/profile" => Renderiza la vista del perfil
-router.get("/", async (req, res, next) => {
+router.get("/",isLoggedIn, async (req, res, next) => {
   try {
     // Buscar todos los destinos del usuario logueado
     const allDestines = await Destino.find({
@@ -33,7 +40,7 @@ router.get("/", async (req, res, next) => {
 
 
 // GET "/profile/:userId/edit" => crea el formulario para editar detalles del usuario
-router.get("/:userId/edit", (req, res, next) => {
+router.get("/:userId/edit",isLoggedIn, (req, res, next) => {
   User.findById(req.params.userId)
     .then((userDetails) => {
 
@@ -68,7 +75,7 @@ router.post("/:userId/edit", async (req, res, next) => {
 });
 
 // GET "/profile/:userId/image" => Renderiza el formulario para actualizar la foto de perfil
-router.get("/:userId/image", (req, res, next) => {
+router.get("/:userId/image",isLoggedIn, (req, res, next) => {
   User.findById(req.params.userId)
   .then((userDetails)=>{
     res.render("profile/edit-foto.hbs",{
