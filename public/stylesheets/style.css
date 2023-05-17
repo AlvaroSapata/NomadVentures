@@ -106,25 +106,58 @@ nav .nav-centro .loggedOff {
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 }
 
 h1 {
   color: 15px;
 }
 
-.Lista-destinos {
+.lista-destinos {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+ 
+  
 }
+.lista-destinos img {
+
+  height: 250px;
+  
+  width: 300px; 
+  
+  object-fit: cover;
+
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+   */
+  }
+
+  .list-group-item{
+    background-color: #000000;
+    color: #e8e0cd;
+    vertical-align: middle;
+  }
 
 .card {
   color: black;
   background-color: #e8e0cd;
+  height: 300px;
+  margin: 0px 20px 20px 20px;
+  text-align: center;
+  
+  
 }
 
 .card-body {
   background-color: black;
-  color: white;
+  color: #e8e0cd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
 }
 
 .prueba-lideres {
@@ -185,3 +218,5 @@ h1 {
   position: relative;
   bottom: 200px;
 }
+
+
