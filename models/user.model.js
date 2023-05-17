@@ -33,6 +33,10 @@ const userSchema = new Schema(
    
     image:{
         type:String,
+    },
+    viajesApuntado:{
+      type: [Schema.Types.ObjectId],
+      ref: "Destino"
     }
   }
 );

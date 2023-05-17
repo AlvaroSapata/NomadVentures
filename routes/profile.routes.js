@@ -13,10 +13,14 @@ router.get("/", async (req, res, next) => {
       lider: req.session.loggedUser._id,
     }).populate("lider");
     // Buscar la info del usuario
-    const userDetails = await User.findById(req.session.loggedUser._id);
-    // console.log("req.session.loggedUser",req.session.loggedUser);
-    // console.log("allDestines",allDestines);
-    console.log("userDetails", userDetails);
+    const userDetails = await User.findById(req.session.loggedUser._id)
+    .populate("viajesApuntado");
+    userDetails.viajesApuntado.forEach((eachDestino)=>{
+      eachDestino.formatedDate = eachDestino.date.toLocaleDateString(
+        "Sp-SP",
+        { weekday: "long", year: "numeric", month: "short", day: "numeric" }
+      );
+    })
     res.render("profile/profile.hbs", {
       allDestines,
       userDetails,
@@ -26,11 +30,13 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+
+
 // GET "/profile/:userId/edit" => crea el formulario para editar detalles del usuario
 router.get("/:userId/edit", (req, res, next) => {
   User.findById(req.params.userId)
     .then((userDetails) => {
-      // console.log("userDetails",userDetails);
+
       res.render("profile/editar-profile.hbs", {
         userDetails,
       });
@@ -54,13 +60,14 @@ router.post("/:userId/edit", async (req, res, next) => {
       },
       { new: true }
     );
-    //  console.log(req.body);
+
     res.redirect("/profile");
   } catch (error) {
     next(error);
   }
 });
 
+// GET "/profile/:userId/image" => Renderiza el formulario para actualizar la foto de perfil
 router.get("/:userId/image", (req, res, next) => {
   User.findById(req.params.userId)
   .then((userDetails)=>{
@@ -74,21 +81,19 @@ router.get("/:userId/image", (req, res, next) => {
   })
 });
 
+// POST "/profile/:userId/image" => Actualiza la foto de perfil
 router.post("/:userId/image",uploader.single("image"),async (req, res, next) => {
     if (req.file === undefined) {
       try {
         const userDetails = await User.findById(req.params.userId);
-
         res.render("profile/edit-foto.hbs", {
           errorImageMessage:
             "Para actualizar la foto debes seleccionar un archivo",
           userDetails,
         });
-        
       } catch (error) {
         next(error);
       }
-
       return;
     }
     try {
@@ -107,39 +112,5 @@ router.post("/:userId/image",uploader.single("image"),async (req, res, next) => 
   }
 );
 
-// // POST "/destinos/:destinoId/edit/image" => Envia el formulario para editar detalles del destino
-// router.post(
-//   "/:destinoId/edit/image",
-//   uploader.single("image"),
-//   async (req, res, next) => {
-//     if (req.file === undefined) {
-//       try{
-//         const destinoDetails = await Destino.findById(req.params.destinoId)
-
-//         res.render("destinos/editar-destino.hbs", {
-//           errorImageMessage: "Para actualizar la foto debes seleccionar un archivo",
-//           destinoDetails
-//         });
-
-//       } catch(error){
-//         next(error)
-//       }
-
-//       return;
-//     }
-//     try {
-//       const response = await Destino.findByIdAndUpdate(
-//         req.params.destinoId,
-//         {
-//           image: req.file.path,
-//         },
-//         { new: true }
-//       );
-//       res.redirect(`/destinos/${req.params.destinoId}/edit`);
-//     } catch (error) {
-//       next(error);
-//     }
-//   }
-// );
 
 module.exports = router;

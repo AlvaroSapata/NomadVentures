@@ -28,7 +28,13 @@
         </div>
       </div>
     </div>
-    <button>Reservar</button>
-  </div>
 
+    <form action="/destinos/{{this.allDetails._id}}/join" method="post">
+      <button type="submit">Apuntarme al viaje</button>
+    </form>
+
+  </div>
+  {{#if this.errorJoinMessage}}
+    <p style="color: red">{{this.errorJoinMessage}}</p>
+  {{/if}}
 </div>

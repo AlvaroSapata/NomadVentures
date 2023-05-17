@@ -1,31 +1,37 @@
+<div class="titulo-expediciones">
+  <h2>Expediciones</h2>
 
+  <div
+    class="btn-group"
+    role="group"
+    aria-label="Button group with nested dropdown"
+  >
 
-<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
- 
-
-  <div class="btn-group" role="group">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      Filtra por precio
-    </button>
-    <ul class="dropdown-menu">
-      <li>
-        <form action="/destinos/mayorMenor" method="post">
-          <button class="dropdown-item" type="submit">Descendente</button>
-        </form>
-      </li>
-      <li>
-        <form action="/destinos/menorMayor" method="post">
-          <button class="dropdown-item" type="submit">Ascendente</button>
-        </form>
-      </li>
-    </ul>
+    <div class="btn-group color" role="group">
+      <button
+        type="button"
+        class="btn btn-primary dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Filtra por precio
+      </button>
+      <ul class="dropdown-menu">
+        <li>
+          <form action="/destinos/mayorMenor" method="post">
+            <button class="dropdown-item ab" type="submit"> Descendente</button>
+          </form>
+        </li>
+        <li>
+          <form action="/destinos/menorMayor" method="post">
+            <button class="dropdown-item bc" type="submit">Ascendente</button>
+          </form>
+        </li>
+      </ul>
+    </div>
   </div>
+<hr>
 </div>
-
-
-
-
-<h2>Expediciones</h2>
 
 <div class="Lista-destinos">
 
@@ -35,7 +41,7 @@
 
       <a href="/destinos/{{this._id}}">
 
-        <div class="card" style="width: 300px;">
+        <div class="card" style="width: 250px;">
 
           <img
             src="{{this.image}}"
@@ -53,15 +59,18 @@
           <ul class="list-group list-group-flush">
 
             <li class="list-group-item">
+              {{!-- imagen --}}
               {{this.lider.firstName}}
               {{this.lider.lastName}}
             </li>
 
             <li class="list-group-item">
-              {{this.price}} €
+              {{this.price}}
+              €
             </li>
 
             <li class="list-group-item">
+              {{!-- imagen --}}
               {{this.formatedDate}}
             </li>
 
@@ -74,6 +83,5 @@
     {{/each}}
 
   </div>
-
 
 </div>

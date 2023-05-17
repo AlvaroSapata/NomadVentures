@@ -19,13 +19,27 @@
 </div>
 <hr>
 <h3>Viajes a los que me he apuntado</h3>
+
+{{#each this.userDetails.viajesApuntado}}
+<a href="/destinos/{{this._id}}" >
+<div class="card" style="width: 18rem;">
+  <img src="{{this.image}}" class="card-img-top" alt="image" width="180px">
+  <div class="card-body">
+    <h5 class="card-title">{{this.title}}</h5>
+    <h5 class="card-title"><small>{{this.formatedDate}}</small></h5>
+  </div>
+</div></a>
+{{/each}}
 <hr>
 <h3>Viajes que he creado</h3>
 
 {{#each this.allDestines}}
-<li><img src="{{this.image}}" alt="image" width="200px"> <br> {{this.title}} {{this.isValidated}} <a href="/destinos/{{this._id}}/edit"><button>editar</button></a></li>
-{{/each}}
+<div class="card" style="width: 18rem;">
+  <img src="{{this.image}}" class="card-img-top" alt="image" width="180px">
+  <div class="card-body">
+    <h5 class="card-title">{{this.title}} : {{this.isValidated}}</h5>
+    <a href="/destinos/{{this._id}}/edit" class="btn btn-primary">editar</a>
+  </div>
 </div>
+{{/each}}
 {{!-- _____________________________________________________________________ --}}
-
-

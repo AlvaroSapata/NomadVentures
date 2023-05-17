@@ -30,11 +30,15 @@ const destinoSchema = new Schema({
     type: String,
     required: false,
   },
-  isValidated:{
-    type : String,
-    enum: ["pendiente", "rechazado", "aceptado"] ,
-    default: "pendiente"
-  }
+  isValidated: {
+    type: String,
+    enum: ["pendiente", "rechazado", "aceptado"],
+    default: "pendiente",
+  },
+  joinedPeople: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const Destino = model("Destino", destinoSchema);

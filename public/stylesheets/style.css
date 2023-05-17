@@ -1,10 +1,20 @@
+/* 
+    #000000 
+    #e8e0cd
+    #a7a194
+    #6f6c62
+    #2e2d29
+*/
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: black;
   color: white;
 }
-nav{
+
+/* Barra de navegacion _______________________________________________ */
+nav {
   background-color: #6f6c62;
   width: auto;
   border-radius: 100px;
@@ -13,10 +23,9 @@ nav{
   top: -35px;
   padding: 8px;
   z-index: 1;
-
 }
 
-nav img{
+nav img {
   border-radius: 100px;
 }
 nav a {
@@ -26,51 +35,116 @@ nav a {
 }
 
 nav a:hover {
-  color: #ffffff; 
+  color: #ffffff;
   text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 8px;
+}
+
+.nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+}
+
+nav .nav-derecha {
+  margin-right: 10px;
+  display: flex;
+  justify-content: flex-end;
+  width: 20%;
+}
+
+nav .nav-izquierda {
+  display: flex;
+  justify-content: flex-start;
+  width: 20%;
+}
+
+nav .nav-centro .loggedOff {
+  display: flex;
+  justify-content: center;
+}
+/* Home _______________________________________________ */
+
+.home-imagen {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 0px;
+}
+
+/* Destinos _______________________________________________ */
+
+.btn-group .color button {
+  background-color: #6f6c62;
+  border-color: #6f6c62;
+  color: #e8e0cd;
+  font-size: 13px;
+  width: 90vw;
+}
+
+.dropdown-menu {
+  background-color: #a7a194;
+  /* background-color: #6f6c62; */
+}
+
+.dropdown-menu .ab,
+.dropdown-menu .bc {
+  background-color: #a7a194 !important;
+  /* background-color: #6f6c62; */
+}
+
+.dropdown-menu .ab:hover,
+.dropdown-menu .bc:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 8px;
+}
+
+.titulo-expediciones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1 {
   color: 15px;
 }
 
-.Lista-destinos{
+.Lista-destinos {
   display: flex;
-  flex-direction: row;
-
+  flex-direction: column;
 }
 
-.card{
+.card {
   color: black;
   background-color: #e8e0cd;
 }
 
-.card-body{
+.card-body {
   background-color: black;
   color: white;
 }
 
-.prueba-lideres{
+.prueba-lideres {
   display: flex;
   gap: 10px;
 }
 
-.formulario{
+.formulario {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 500px;
   margin-top: 0px;
- /*  background-color: #6f6c62; */
+  /*  background-color: #6f6c62; */
   padding: 20px;
   border-radius: 50px;
-  
 }
 
-.titulo-registro{
+.titulo-registro {
   display: flex;
   gap: 10px;
 }
@@ -91,22 +165,23 @@ h1 {
   margin-bottom: 0;
   margin-left: 0;
   padding: 0;
- 
+
   list-style: none;
   display: flex;
   justify-content: center;
-  align-items: center;}
+  align-items: center;
+}
 
-  .contenedor-carrusel{
-    width: 1000px;
-    margin-left: 100px;
-    margin-right: 100px;
-    padding-left: 100px;
-    padding-right: 100px;
-    margin-top: 50px;
-  }
+.contenedor-carrusel {
+  width: 1000px;
+  margin-left: 100px;
+  margin-right: 100px;
+  padding-left: 100px;
+  padding-right: 100px;
+  margin-top: 50px;
+}
 
-  .flechas-carrusel{
-    position: relative;
-    bottom: 200px;
-  }
+.flechas-carrusel {
+  position: relative;
+  bottom: 200px;
+}

@@ -6,16 +6,21 @@ const User = require("../models/user.model.js");
 const uploader = require("../middlewares/uploader.js");
 
 //Requerir los middlewares
-const {isLoggedIn, isAdmin, isGuia, isUsuario, isGuiaOrAdmin} = require("../middlewares/auth.middleware.js");
+const {
+  isLoggedIn,
+  isAdmin,
+  isGuia,
+  isUsuario,
+  isGuiaOrAdmin,
+} = require("../middlewares/auth.middleware.js");
 
 // GET "/destinos" => Renderizar la lista de destinos
 router.get("/", (req, res, next) => {
   Destino.find({ isValidated: "aceptado" })
-  
+
     .populate("lider")
     .select({ image: 1, title: 1, lider: 1, date: 1, price: 1 })
     .then((allDestines) => {
-/*       console.log(allDestines); */
       allDestines.forEach((eachDestino) => {
         eachDestino.formatedDate = eachDestino.date.toLocaleDateString(
           "Sp-SP",
@@ -25,7 +30,6 @@ router.get("/", (req, res, next) => {
       res.render("destinos/lista-destinos.hbs", {
         allDestines,
       });
-      console.log("por aquiiiii", allDestines)
     })
     .catch((error) => {
       next(error);
@@ -33,14 +37,12 @@ router.get("/", (req, res, next) => {
 });
 
 // GET "/destinos/crear" => Renderiza el formulario de destinos
-router.get("/crear",isLoggedIn, isGuiaOrAdmin, (req, res, next) => {
-/*   console.log("ES ESTEE", req.file); */
+router.get("/crear", isLoggedIn, isGuiaOrAdmin, (req, res, next) => {
   res.render("destinos/crear-destino.hbs");
 });
 
 // POST "/destinos/crear" => Crea el formulario de destinos
 router.post("/crear", uploader.single("image"), async (req, res, next) => {
-  console.log(req.session.loggedUser);
   const { title, price, date, maxPeople, details, isValidated } = req.body;
   if (req.file === undefined) {
     next("no hay imagen");
@@ -61,8 +63,6 @@ router.post("/crear", uploader.single("image"), async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-
-  //   res.render("destinos/crear-destino.hbs");
 });
 
 // GET "/destinos/:destinoId" => Detalles del destino
@@ -76,7 +76,6 @@ router.get("/:destinoId", (req, res, next) => {
         month: "short",
         day: "numeric",
       });
-/*       console.log(allDetails); */
       res.render("destinos/detalles-destino.hbs", {
         allDetails,
         formatDate,
@@ -88,17 +87,13 @@ router.get("/:destinoId", (req, res, next) => {
 });
 
 // GET "/destinos/:destinoId/edit" => crea el formulario para editar detalles del destino
-router.get("/:destinoId/edit",  isAdmin, isGuia, (req, res, next) => {
+router.get("/:destinoId/edit", isAdmin, isGuia, (req, res, next) => {
   Destino.findById(req.params.destinoId)
     .then((destinoDetails) => {
-      console.log(destinoDetails.date.toLocaleDateString("Sp-SP"));
-      formatedDate = destinoDetails.date.toISOString().slice(0,10);
-      console.log(destinoDetails);
-      console.log(formatedDate);
+      formatedDate = destinoDetails.date.toISOString().slice(0, 10);
       res.render("destinos/editar-destino.hbs", {
         destinoDetails,
         formatedDate,
-        
       });
     })
     .catch((error) => {
@@ -108,18 +103,17 @@ router.get("/:destinoId/edit",  isAdmin, isGuia, (req, res, next) => {
 
 // POST "/destinos/:destinoId/edit" => Envia el formulario para editar detalles del destino
 router.post("/:destinoId/edit", async (req, res, next) => {
-/*   console.log("los body", req.body); */
   try {
     const { title, price, date, maxPeople, details, image } = req.body;
     const response = await Destino.findByIdAndUpdate(
-      req.params.destinoId, 
+      req.params.destinoId,
       {
         title,
         price,
         date,
         maxPeople,
         details,
-        isValidated: "pendiente"
+        isValidated: "pendiente",
       },
       { new: true }
     );
@@ -135,18 +129,18 @@ router.post(
   uploader.single("image"),
   async (req, res, next) => {
     if (req.file === undefined) {
-      try{
-        const destinoDetails = await Destino.findById(req.params.destinoId)
-        
-        res.render("destinos/editar-destino.hbs", {
-          errorImageMessage: "Para actualizar la foto debes seleccionar un archivo",
-          destinoDetails
-        });
+      try {
+        const destinoDetails = await Destino.findById(req.params.destinoId);
 
-      } catch(error){
-        next(error)
+        res.render("destinos/editar-destino.hbs", {
+          errorImageMessage:
+            "Para actualizar la foto debes seleccionar un archivo",
+          destinoDetails,
+        });
+      } catch (error) {
+        next(error);
       }
-      
+
       return;
     }
     try {
@@ -176,53 +170,86 @@ router.post("/:destinoId/delete", (req, res, next) => {
 });
 
 // POST "/destinos/mayorMenor" => ordena de mas caro a mas barato
-router.post("/mayorMenor", (req,res, next)=>{
+router.post("/mayorMenor", (req, res, next) => {
   Destino.find({ isValidated: "aceptado" })
-  .populate("lider")
-  .select({ image: 1, title: 1, lider: 1, date: 1, price:1 })
- .sort({price: -1})
-  .then((allDestines) => {
-/*       console.log(allDestines); */
-    allDestines.forEach((eachDestino) => {
-      eachDestino.formatedDate = eachDestino.date.toLocaleDateString(
-        "Sp-SP",
-        { weekday: "long", year: "numeric", month: "short", day: "numeric" }
-      );
-    });
+    .populate("lider")
+    .select({ image: 1, title: 1, lider: 1, date: 1, price: 1 })
+    .sort({ price: -1 })
+    .then((allDestines) => {
+      allDestines.forEach((eachDestino) => {
+        eachDestino.formatedDate = eachDestino.date.toLocaleDateString(
+          "Sp-SP",
+          { weekday: "long", year: "numeric", month: "short", day: "numeric" }
+        );
+      });
 
-     
-    res.render("destinos/lista-destinos.hbs", {
-      allDestines,
+      res.render("destinos/lista-destinos.hbs", {
+        allDestines,
+      });
+    })
+    .catch((error) => {
+      next(error);
     });
-  })
-  .catch((error) => {
-    next(error);
-  });
-
-})
+});
 
 // POST "/destinos/menorMayor" => ordena de mas barato a mas caro
-router.post("/menorMayor", (req,res, next)=>{
+router.post("/menorMayor", (req, res, next) => {
   Destino.find({ isValidated: "aceptado" })
-  .populate("lider")
-  .select({ image: 1, title: 1, lider: 1, date: 1, price:1 })
-  .sort({price: 1})
-  .then((allDestines) => {
-/*       console.log(allDestines); */
-    allDestines.forEach((eachDestino) => {
-      eachDestino.formatedDate = eachDestino.date.toLocaleDateString(
-        "Sp-SP",
-        { weekday: "long", year: "numeric", month: "short", day: "numeric" }
-      );
+    .populate("lider")
+    .select({ image: 1, title: 1, lider: 1, date: 1, price: 1 })
+    .sort({ price: 1 })
+    .then((allDestines) => {
+      allDestines.forEach((eachDestino) => {
+        eachDestino.formatedDate = eachDestino.date.toLocaleDateString(
+          "Sp-SP",
+          { weekday: "long", year: "numeric", month: "short", day: "numeric" }
+        );
+      });
+      res.render("destinos/lista-destinos.hbs", {
+        allDestines,
+      });
+    })
+    .catch((error) => {
+      next(error);
     });
-    res.render("destinos/lista-destinos.hbs", {
-      allDestines,
-    });
-  })
-  .catch((error) => {
-    next(error);
-  });
+});
 
-})
+// POST "/destinos/:destinoId/join" => Añade el destino al array del usuario
+router.post("/:destinoId/join", (req, res, next) => {
+  User.findById(req.session.loggedUser._id)
+
+    .then(() => {
+      let yaApuntado = false;
+      req.session.loggedUser.viajesApuntado.forEach((eachDestino) => {
+        if (eachDestino.includes(req.params.destinoId)) {
+          yaApuntado = true;
+        }
+      });
+      if (yaApuntado === true) {
+        res.render("destinos/detalles-destino.hbs", {
+          errorJoinMessage: "Ya estas apuntado a este viaje",
+        });
+      } /* else if (joinedPeople>=maxPeople) { //! Filtrar que el viaje no este completo
+        res.render("destinos/detalles-destino.hbs", {
+          errorJoinMessage: "El viaje esta completo",
+        });
+      } */ else {
+        User.findByIdAndUpdate(
+          req.session.loggedUser._id,
+          { $push: { viajesApuntado: req.params.destinoId } },
+          { new: true }
+        )
+          .then(() => {
+            res.redirect("/profile");
+          })
+          .catch((error) => {
+            next(error);
+          });
+      }
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
 
 module.exports = router;

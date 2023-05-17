@@ -21,66 +21,102 @@
 
       {{#if this.isUserLogged}}
         {{#if this.isUserLoggedAsUsuario}}
-          <a href="/"><img
-              src="/images/circuloLogo.png"
-              alt="icon"
-              height="35px"
-            /></a>
-          <a href="/">Inicio</a>
-          <a href="/destinos">Destinos</a>
+          <div class="nav-row">
+            <div class="nav-izquierda">
+              <a href="/"><img
+                  src="/images/circuloLogo.png"
+                  alt="icon"
+                  height="35px"
+                /></a>
+            </div>
+            <div class="nav-centro">
+              <a href="/">Inicio</a>
+              <a href="/destinos">Destinos</a>
+              <a href="/about">Sobre Nosotros</a>
+            </div>
 
-          <a href="/auth/logout">Logout</a>
-          <a href="/profile">Perfil</a>
-          <a href="/about">Sobre Nosotros</a>
-
+            <div class="nav-derecha">
+              <a href="/profile">Perfil</a>
+              <a href="/auth/logout">Logout</a>
+            </div>
+          </div>
         {{/if}}
         {{#if this.isUserLoggedAsGuia}}
-          <a href="/"><img
-              src="/images/circuloLogo.png"
-              alt="icon"
-              height="35px"
-            /></a>
-          <a href="/">Inicio</a>
-          <a href="/destinos">Destinos</a>
-          <a href="/destinos/crear">Crear Destino</a>
+          <div class="nav-row">
+            <div class="nav-izquierda">
+              <a href="/"><img
+                  src="/images/circuloLogo.png"
+                  alt="icon"
+                  height="35px"
+                /></a>
+            </div>
+            <div class="nav-centro">
+              <a href="/">Inicio</a>
+              <a href="/destinos">Destinos</a>
+              <a href="/about">Sobre Nosotros</a>
+            </div>
+            <div class="nav-centroderecha">
+              <a href="/destinos/crear">Crear Destino</a>
+            </div>
+            <div class="nav-derecha">
 
-          <a href="/auth/logout">Logout</a>
-          <a href="/profile">Perfil</a>
-          <a href="/about">Sobre Nosotros</a>
-
+              <a href="/profile">Perfil</a>
+              <a href="/auth/logout">Logout</a>
+            </div>
+          </div>
         {{/if}}
         {{#if this.isUserLoggedAsAdmin}}
-          <a href="/"><img
-              src="/images/circuloLogo.png"
-              alt="icon"
-              height="35px"
-            /></a>
-          <a href="/">Inicio</a>
-          <a href="/destinos">Destinos</a>
-          <a href="/destinos/crear">Crear Destino</a>
+          <div class="nav-row">
+            <div class="nav-izquierda">
+              <a href="/"><img
+                  src="/images/circuloLogo.png"
+                  alt="icon"
+                  height="35px"
+                /></a>
+            </div>
+            <div class="nav-centro">
 
-          <a href="/auth/logout">Logout</a>
-          <a href="/profile">Perfil</a>
-          <a href="/about">Sobre Nosotros</a>
-          <a href="/admin/validate">validar</a>
-          <a href="/admin/userlist">Lista de usuarios</a>
+              <a href="/">Inicio</a>
+              <a href="/destinos">Destinos</a>
+
+              <a href="/about">Sobre Nosotros</a>
+            </div>
+            <div class="nav-centroderecha">
+              <a href="/destinos/crear">Crear Destino</a>
+              <a href="/admin/validate">Validar</a>
+              <a href="/admin/userlist">Lista de usuarios</a>
+            </div>
+            <div class="nav-derecha">
+
+              <a href="/profile">Perfil</a>
+              <a href="/auth/logout">Logout</a>
+            </div>
+          </div>
         {{/if}}
 
       {{else}}
+        <div class="nav-row">
 
-        <a href="/"><img
-            src="/images/circuloLogo.png"
-            alt="icon"
-            height="35px"
-          /></a>
-        <a href="/">Inicio</a>
-        <a href="/destinos">Destinos</a>
+          <div class="nav-izquierda">
+            <a href="/"><img
+                src="/images/circuloLogo.png"
+                alt="icon"
+                height="35px"
+              /></a>
+          </div>
 
-        <a href="/auth/signup">Registrarse</a>
-        <a href="/auth/login">Acceder</a>
+          <div class="nav-centro loggedOff">
+            <a href="/">Inicio</a>
+            <a href="/destinos">Destinos</a>
+            <a href="/about">Sobre Nosotros</a>
+          </div>
 
-        <a href="/about">Sobre Nosotros</a>
+          <div class="nav-derecha">
+            <a href="/auth/signup">Registrarse</a>
+            <a href="/auth/login">Acceder</a>
+          </div>
 
+        </div>
       {{/if}}
 
     </nav>
