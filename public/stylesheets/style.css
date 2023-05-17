@@ -1,10 +1,10 @@
-/* 
-    #000000 
-    #e8e0cd
-    #a7a194
-    #6f6c62
-    #2e2d29
-*/
+.paletadecolores {
+  background-color: #e8e0cd;
+  background-color: #a7a194;
+  background-color: #6f6c62;
+  background-color: #2e2d29;
+  background-color: #000000;
+}
 
 body {
   padding: 50px;
@@ -16,9 +16,8 @@ body {
 /* Barra de navegacion _______________________________________________ */
 nav {
   background-color: #6f6c62;
-  width: auto;
+  width: 90vw;
   border-radius: 100px;
-  /* position: sticky; */
   position: relative;
   top: -35px;
   padding: 8px;
@@ -81,7 +80,9 @@ nav .nav-centro .loggedOff {
   border-color: #6f6c62;
   color: #e8e0cd;
   font-size: 13px;
-  width: 90vw;
+  width: 80vw;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .dropdown-menu {
@@ -92,6 +93,7 @@ nav .nav-centro .loggedOff {
 .dropdown-menu .ab,
 .dropdown-menu .bc {
   background-color: #a7a194 !important;
+  height: 10px;
   /* background-color: #6f6c62; */
 }
 
@@ -106,7 +108,6 @@ nav .nav-centro .loggedOff {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 }
 
 h1 {
@@ -117,37 +118,132 @@ h1 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
- 
-  
+}
+.lista-destinos a {
+  text-decoration: none;
 }
 .lista-destinos img {
-
   height: 250px;
-  
-  width: 300px; 
-  
+  width: 300px;
   object-fit: cover;
+}
 
-  /* display: flex;
-  align-items: center;
+/* Perfil _______________________________________________ */
+
+.lista-destinos-perfil {
+  display: flex;
   justify-content: center;
-   */
-  }
+  flex-wrap: wrap;
+}
 
-  .list-group-item{
-    background-color: #000000;
-    color: #e8e0cd;
-    vertical-align: middle;
-  }
+.lista-destinos-perfil a {
+  text-decoration: none;
+}
+.lista-destinos-perfil img {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+}
+
+.card .profileCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.perfil h3 {
+  display: flex;
+  justify-content: center;
+  margin: 0px 0px 20px 0px;
+}
+
+/* general */
+.btn .btn-primary {
+  background-color: #6f6c62;
+  color: #000000;
+}
+
+.botonperfil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6f6c62;
+  color: #e8e0cd;
+  text-decoration: none;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.botonperfil:hover {
+  color: #ffffff;
+  background-color: #a7a194;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+
+.imagenpPerfil {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.imagenpPerfil img {
+  height: 160px;
+  width: 200px;
+  object-fit: cover;
+}
+
+.perfil h1 {
+  display: flex;
+  justify-content: center;
+}
+
+.perfilCompleto {
+  background-color: #000000;
+
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.perfilBtn {
+  background-color: #6f6c62;
+  border-color: #6f6c62;
+  color: #e8e0cd;
+  font-size: 12px;
+  width: 100px;
+}
+.perfilBtn:hover {
+  color: #ffffff;
+  background-color: #a7a194;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+  border-color: #a7a194;
+}
+
+.carta-perfil {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.list-group-item {
+  background-color: #000000;
+  color: #e8e0cd;
+  vertical-align: middle;
+}
 
 .card {
   color: black;
-  background-color: #e8e0cd;
+  background-color: #000000;
   height: 300px;
   margin: 0px 20px 20px 20px;
   text-align: center;
-  
-  
+  border-color: #e8e0cd;
+  border-width: 1px;
 }
 
 .card-body {
@@ -218,5 +314,3 @@ h1 {
   position: relative;
   bottom: 200px;
 }
-
-

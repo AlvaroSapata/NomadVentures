@@ -1,45 +1,82 @@
-<div>
-<h1>Mi Perfil</h1>
-<div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="{{this.userDetails.image}}" class="img-fluid rounded-start" alt="image">
-      <a href="/profile/{{this.userDetails._id}}/image"><button>editar imagen</button></a>
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Usuario: {{this.userDetails.firstName}} {{this.userDetails.lastName}}</h5>
-        <p class="card-text">Rol: {{this.userDetails.rol}}</p>
-        <p class="card-text"><small class="text-body-secondary">Email: {{this.userDetails.email}}</small></p>
-        <p class="card-text"><small class="text-body-secondary">Telefono: {{this.userDetails.phone}}</small></p>
-        <a href="/profile/{{this.userDetails._id}}/edit"><button>editar</button></a>
+<div class="perfil">
+  <h1>Mi Perfil</h1>
+
+  <div class="card mb-3 perfilCompleto" style="max-width: 540px; height:220px;">
+    <div class="row g-0">
+      <div class="col-md-4 imagenpPerfil">
+        <img
+          src="{{this.userDetails.image}}"
+          class="img-fluid rounded-start"
+          alt="image"
+        />
+        <a href="/profile/{{this.userDetails._id}}/image"><button class="btn btn-primary perfilBtn">editar imagen</button></a>
+      </div>
+      <div class="col-md-8" >
+        <div class="card-body carta-perfil">
+          <h5 class="card-title">Usuario:
+            {{this.userDetails.firstName}}
+            {{this.userDetails.lastName}}</h5>
+          <p class="card-text">Rol: {{this.userDetails.rol}}</p>
+          <p class="card-text"><small class="text-body-secondary">Email:
+              {{this.userDetails.email}}</small></p>
+          <p class="card-text"><small class="text-body-secondary">Telefono:
+              {{this.userDetails.phone}}</small></p>
+          <a href="/profile/{{this.userDetails._id}}/edit"><button
+            class="btn btn-primary perfilBtn">editar</button></a>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<hr>
-<h3>Viajes a los que me he apuntado</h3>
 
-{{#each this.userDetails.viajesApuntado}}
-<a href="/destinos/{{this._id}}" >
-<div class="card" style="width: 18rem;">
-  <img src="{{this.image}}" class="card-img-top" alt="image" width="180px">
-  <div class="card-body">
-    <h5 class="card-title">{{this.title}}</h5>
-    <h5 class="card-title"><small>{{this.formatedDate}}</small></h5>
-  </div>
-</div></a>
-{{/each}}
-<hr>
-<h3>Viajes que he creado</h3>
+  <hr />
 
-{{#each this.allDestines}}
-<div class="card" style="width: 18rem;">
-  <img src="{{this.image}}" class="card-img-top" alt="image" width="180px">
-  <div class="card-body">
-    <h5 class="card-title">{{this.title}} : {{this.isValidated}}</h5>
-    <a href="/destinos/{{this._id}}/edit" class="btn btn-primary">editar</a>
+  <h3>Viajes a los que me he apuntado</h3>
+
+  <div class="lista-destinos-perfil">
+    {{#each this.userDetails.viajesApuntado}}
+      <a href="/destinos/{{this._id}}">
+        <div>
+          <div class="card profileCard" style="width: 200px; height: 350px">
+            <div>
+              <img src="{{this.image}}" class="card-img-top" alt="image" />
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{this.title}}</h5>
+            </div>
+            <div class="card-body">
+              <h6 class="card-text"><small>{{this.formatedDate}}</small></h6>
+            </div>
+          </div>
+        </div>
+      </a>
+    {{/each}}
+  </div>
+
+  <hr />
+
+  <h3>Viajes que he creado</h3>
+
+  <div class="lista-destinos-perfil">
+    {{#each this.allDestines}}
+      <div class="card profileCard" style="width: 200px; height: 350px">
+        <div>
+          <img
+            src="{{this.image}}"
+            class="card-img-top"
+            alt="image"
+            width="180px"
+          />
+        </div>
+
+        <div class="card-body">
+          <h5 class="card-title">{{this.title}}</h5>
+        </div>
+
+        <div class="card-body">
+          <h6 class="card-text"><small> {{this.isValidated}}</small></h6>
+        </div>
+        <a href="/destinos/{{this._id}}/edit" class="botonperfil"> editar</a>
+      </div>
+    {{/each}}
   </div>
 </div>
-{{/each}}
-{{!-- _____________________________________________________________________ --}}
