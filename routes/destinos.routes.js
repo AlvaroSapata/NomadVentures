@@ -175,6 +175,7 @@ router.post("/:destinoId/delete", (req, res, next) => {
     });
 });
 
+// POST "/destinos/mayorMenor" => ordena de mas caro a mas barato
 router.post("/mayorMenor", (req,res, next)=>{
   Destino.find({ isValidated: "aceptado" })
   .populate("lider")
@@ -200,7 +201,7 @@ router.post("/mayorMenor", (req,res, next)=>{
 
 })
 
-
+// POST "/destinos/menorMayor" => ordena de mas barato a mas caro
 router.post("/menorMayor", (req,res, next)=>{
   Destino.find({ isValidated: "aceptado" })
   .populate("lider")
