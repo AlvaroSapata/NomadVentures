@@ -181,7 +181,7 @@ h1 {
   margin: 0px 0px 20px 0px;
 }
 
-/* general */
+/* general _________________________________________________________*/
 .btn .btn-primary {
   background-color: #6f6c62;
   color: #000000;
@@ -331,7 +331,7 @@ h1 {
   border-color: #a7a194;
 }
 
-editarDestinoBtn .carta-perfil {
+.carta-perfil {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -391,6 +391,170 @@ editarDestinoBtn .carta-perfil {
   border-width: 2px;
 } */
 
+
+/* Login _______________________________________________ */
+.loginForm {
+  display: flex;
+  justify-content: center;
+  color: #e8e0cd;
+}
+
+.signupForm {
+  display: flex;
+  justify-content: center;
+  color: #e8e0cd;
+}
+
+.crearDestinoForm {
+  display: flex;
+  justify-content: center;
+  color: #e8e0cd;
+}
+
+.editarDestinoForm {
+  display: flex;
+  justify-content: center;
+  color: #e8e0cd;
+}
+
+/* expediciones por validar _______________________________________________ */
+
+.listaPorValidar{
+  display: flex;
+  justify-content: center;
+  color: #e8e0cd;
+}
+
+.listaPorValidar a{
+text-decoration: none;
+}
+.listaPorValidar h2{
+display: flex;
+justify-content: center;
+margin-bottom: 20px;
+}
+
+.listaPorValidarContainer{
+  display: flex;
+  justify-content: center;
+
+}
+
+.card .listaPorValidarCard{
+  height: 300px;
+}
+
+.listaPorValidarImg{
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
+}
+
+/* Destalles destino por validar _______________________________________________ */
+
+.detallesDestinoValidar{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #e8e0cd;
+}
+
+.detallesDestinoValidar h2{
+margin-bottom: 20px;
+}
+
+.detallesDestinoValidarTexts{
+display: flex;
+flex-direction: column;
+}
+
+.detallesDestinoValidarBtns{
+  display: flex;
+  gap: 30px;
+}
+
+
+.detallesDestinoValidarBTN {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6f6c62;
+  color: #e8e0cd;
+  text-decoration: none;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-radius: 5px;
+  width: 200px;
+  margin-top: 10px;
+}
+
+.detallesDestinoValidarBTN:hover {
+  color: #ffffff;
+  background-color: #a7a194;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+
+/* Lista de Usuarios _______________________________________________ */
+
+.listaUsuarios{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.listaUsuarios h1{
+margin-bottom: 20px;
+}
+
+.listaUsuariosBtn {
+  display: flex;
+  justify-content: center;
+  background-color: #6f6c62;
+  color: #e8e0cd;
+  text-decoration: none;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 10px;
+  border-color: #6f6c62;
+}
+
+.listaUsuariosBtn:hover {
+  color: #ffffff;
+  background-color: #a7a194;
+  border-color: #6f6c62;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+
+.listaUsuariosContainer{
+  display: flex;
+}
+
+.listaUsuariosImg{
+  height: 170px;
+  width: 170px;
+  object-fit: cover;
+
+}
+/* About  _______________________________________________ */
+.about-slide {
+  color: #e8e0cd;
+  display: flex;
+  flex-direction: column;
+}
+.about-slide h3{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .carousel-container {
   position: relative;
   margin-bottom: 40px;
@@ -423,31 +587,8 @@ editarDestinoBtn .carta-perfil {
   bottom: 200px;
 }
 
-/* Login _______________________________________________ */
-.loginForm {
+.aboutTextos{
   display: flex;
-  justify-content: center;
-  color: #e8e0cd;
-}
-
-.signupForm {
-  display: flex;
-  justify-content: center;
-  color: #e8e0cd;
-}
-
-.crearDestinoForm {
-  display: flex;
-  justify-content: center;
-  color: #e8e0cd;
-}
-
-.editarDestinoForm {
-  display: flex;
-  justify-content: center;
-  color: #e8e0cd;
-}
-
-.about-slide {
-  color: #e8e0cd;
+  flex-direction: column;
+  align-items: center;
 }

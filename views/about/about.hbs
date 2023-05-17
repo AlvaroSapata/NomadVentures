@@ -1,66 +1,57 @@
 <div class="about-slide">
+  <h3>Acerca de Nosotros</h3>
+  <div>
+    <div class="aboutTextos">
+      <p>El momento es AHORA.<br>Comienza a recorrer y conocer nuestro planeta y todas sus culturas como un auténtico aventurero.</p>
+    
+      <h3>Nuestra filosofia</h3>
 
-<h1>ACERCA DE</h1>
+      <p>Destinos únicos, lugares pocos transitados, culturas desconocidas y formas de viajar originales y pioneras.<br>Desde nuestra visión existe un factor tan importante como el destino, y es quién te acompañará y guiará en tu aventura. Por eso contamos con nuestros Líderes de Expedición, quienes entienden y conocen cada destino como nadie lo ha hecho hasta el momento.<br>   Vivir una experiencia como esta significa quitarse el traje el turista y convertirse en uno más del lugar, solo así podréis descubrir y vivir los territorios que visitamos. A través del contacto con estos nuevos medios y el compromiso con cada una de las comunidades que nos reciben, devolvemos al mundo un poco de todo aquello que nos brinda: conocimiento, empatía, emociones o conciencia.<br>Si lo que buscas es salir de la zona de confort para explorar las regiones más auténticas de todo el mundo acompañando de otras personas aventureras como tú, estás en el lugar correcto.</p>
 
-<p>El momento es AHORA. 
-    <br>
-    Comienza a recorrer y conocer nuestro planeta y todas sus culturas como un auténtico aventurero.</p>
+    </div>
 
-<h1>Nuestra filosofia</h1>
-
-<p>Destinos únicos, lugares pocos transitados, culturas desconocidas y formas de viajar originales y pioneras.
-    <br>
-
-Desde nuestra visión existe un factor tan importante como el destino, y es quién te acompañará y guiará en tu aventura. Por eso contamos con nuestros Líderes de Expedición, quienes entienden y conocen cada destino como nadie lo ha hecho hasta el momento.
-<br>
-
-Vivir una experiencia como esta significa quitarse el traje el turista y convertirse en uno más del lugar, solo así podréis descubrir y vivir los territorios que visitamos. A través del contacto con estos nuevos medios y el compromiso con cada una de las comunidades que nos reciben, devolvemos al mundo un poco de todo aquello que nos brinda: conocimiento, empatía, emociones o conciencia.
-<br>
-
-Si lo que buscas es salir de la zona de confort para explorar las regiones más auténticas de todo el mundo acompañando de otras personas aventureras como tú, estás en el lugar correcto.</p>
-
-
-  <h1>LIDERES DE EXPEDICION</h1>
-{{!-- carrusel entero --}}
-<div class="contenedor-carrusel">
-  {{!-- data-bs-ride para activar el carrusel --}}
-  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-      {{!-- indicadores para navegacion --}}
-    <ol class="carousel-indicators">
-      {{#each this.allUsers}}
-        {{!-- primer elemento del carrusel --}}
-      <li data-bs-target="#carouselExampleInterval" data-bs-slide-to="{{@index}}" {{#if @first}}class="active"{{/if}}></li>
-      {{/each}}
-    </ol>
-      {{!-- agregar active y control de tiempo entre los intercambios y la info de cada carta --}}
-    <div class="carousel-inner">
-      {{#each this.allUsers}}
-      <div class="carousel-item {{#if @first}}active{{/if}}" data-bs-interval="{{#if @first}}3000{{else}}3000{{/if}}">
-        <div class="card" style="width: 18rem;">
-          <img src="{{this.image}}" class="card-img-top" alt="image">
-          <div class="card-body">
-            <h5 class="card-title">{{this.firstName}}</h5>
-            <p class="card-text">{{this.lastName}}</p>
+    <div>
+      <h3>Nuestros Lideres de Expedicion</h3>
+      {{!-- carrusel entero --}}
+      <div class="contenedor-carrusel">
+        {{!-- data-bs-ride para activar el carrusel --}}
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+          {{!-- indicadores para navegacion --}}
+          <ol class="carousel-indicators">
+            {{#each this.allUsers}}
+            {{!-- primer elemento del carrusel --}}
+            <li data-bs-target="#carouselExampleInterval" data-bs-slide-to="{{@index}}" {{#if @first}}class="active"{{/if}}></li>
+            {{/each}}
+          </ol>
+          {{!-- agregar active y control de tiempo entre los intercambios y la info de cada carta --}}
+          <div class="carousel-inner">
+            {{#each this.allUsers}}
+            <div class="carousel-item {{#if @first}}active{{/if}}" data-bs-interval="{{#if @first}}3000{{else}}3000{{/if}}">
+              <div class="card" style="width: 18rem;">
+                <img src="{{this.image}}" class="card-img-top" alt="image">
+                <div class="card-body">
+                  <h5 class="card-title">{{this.firstName}} </h5>
+                  <p class="card-text">{{this.lastName}}</p>
+                </div>
+              </div>
+            </div>
+            {{/each}}
           </div>
         </div>
       </div>
-      {{/each}}
+      <div>
+        {{!-- botones de navegacion --}}
+        <div class="flechas-carrusel">
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-{{!-- botones de navegacion --}}
-  <div class="flechas-carrusel">
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-
-
-
-
-

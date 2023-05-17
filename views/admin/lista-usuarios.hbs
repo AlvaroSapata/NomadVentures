@@ -1,29 +1,36 @@
-<div>
-
+<div class="listaUsuarios">
   <h1>Lista de usuarios</h1>
+  <div>
+    <div class="listaUsuariosContainer">
 
-  {{#each allUsers}}
+      {{#each allUsers}}
 
-    <div class="card mb-3" style="max-width: 300px;">
-      <div class="row g-0">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-8">
+              <img class="listaUsuariosImg" src="{{this.image}}" alt="imagen">
 
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">{{this.firstName}} {{this.lastName}}</h5>
-            <p class="card-text">{{this.email}}</p>
-            <p class="card-text">{{this.phone}}</p>
+              <div class="card-body">
+                <h5 class="card-title">{{this.firstName}} {{this.lastName}}</h5>
+                <p class="card-text">{{this.email}}</p>
+                <p class="card-text">{{this.phone}}</p>
 
-            <p class="card-text"><small class="text-body-secondary">Rol:
-                {{this.rol}}</small></p>
+                <p class="card-text"><small class="text-body-secondary">Rol:
+                    {{this.rol}}</small></p>
 
+              </div>
+            </div>
           </div>
+          <form action="/admin/userlist/{{this._id}}/delete" method="post">
+            <button
+              class="btn btn-primary listaUsuariosBtn"
+              type="submit"
+            >Borrar Usuario</button>
+          </form>
         </div>
-      </div>
-      <form action="/admin/userlist/{{this._id}}/delete" method="post">
-      <button type="submit">Borrar Usuario</button>
-      </form>
+
+      {{/each}}
     </div>
 
-  {{/each}}
-
+  </div>
 </div>

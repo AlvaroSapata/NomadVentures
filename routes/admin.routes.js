@@ -81,7 +81,7 @@ router.post("/:destinoId/validate/denegar", (req, res, next) => {
 // GET "/admin/userlist" => Renderiza la lista de usuarios
 router.get("/userlist",isLoggedIn, isAdmin,(req,res,next)=>{
   User.find()
-  .select({firstName:1,lastName:1,email:1,phone:1,rol:1})
+  .select({firstName:1,lastName:1,email:1,phone:1,rol:1,image:1})
   .then((allUsers)=>{
     res.render("admin/lista-usuarios.hbs",{
       allUsers

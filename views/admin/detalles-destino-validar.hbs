@@ -1,9 +1,6 @@
-<div>
-
+<div class="detallesDestinoValidar">
   <h2>Detalles Destino a Validar</h2>
-
   <div>
-
     <div class="card" style="width: 600px;">
       <img
         src="{{this.allDetails.image}}"
@@ -11,35 +8,38 @@
         alt="image"
         width="200px"
       />
-      <div class="card-body">
-        <h5 class="card-title">{{this.allDetails.title}}</h5>
-        <h5 class="card-title">{{this.allDetails.price}}</h5>
-        <h5 class="card-title">{{this.formatDate}}</h5>
-        <h5 class="card-title">{{this.allDetails.maxPeople}}</h5>
-        <h5 class="card-title">{{this.allDetails.lider.firstName}}
-          {{this.allDetails.lider.lastName}}</h5>
-        <form
-          action="/admin/{{this.allDetails._id}}/validate/aceptar"
-          method="post"
-        >
+      <div class="card-body detallesDestinoValidarTexts">
+        <div>
+          <h5 class="card-title">{{this.allDetails.title}}</h5>
+          <h5 class="card-title">{{this.allDetails.price}}</h5>
+          <h5 class="card-title">{{this.formatDate}}</h5>
+          <h5 class="card-title">{{this.allDetails.maxPeople}}</h5>
+          <h5 class="card-title">{{this.allDetails.lider.firstName}}
+            {{this.allDetails.lider.lastName}}</h5>
+        </div>
+        <div class="detallesDestinoValidarBtns">
+          <form
+            action="/admin/{{this.allDetails._id}}/validate/aceptar"
+            method="post"
+          >
+            <button
+              class="detallesDestinoValidarBTN"
+              type="submit"
+              name="{{this.allDetails.isValidated}}"
+            >Aceptar</button>
+          </form>
 
-          <button
-            type="submit"
-            name="{{this.allDetails.isValidated}}"
-          >Aceptar</button>
-        </form>
-
-        <form
-          action="/admin/{{this.allDetails._id}}/validate/denegar"
-          method="post"
-        >
-
-          <button
-            type="submit"
-            name="{{this.allDetails.isValidated}}"
-          >Rechazar</button>
-        </form>
-
+          <form
+            action="/admin/{{this.allDetails._id}}/validate/denegar"
+            method="post"
+          >
+            <button
+              class="detallesDestinoValidarBTN"
+              type="submit"
+              name="{{this.allDetails.isValidated}}"
+            >Rechazar</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>

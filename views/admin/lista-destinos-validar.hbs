@@ -1,25 +1,27 @@
-<div>
+<div class="listaPorValidar">
+  <div>
+    <h2>Expediciones Por Validar</h2>
+    <div class="listaPorValidarContainer">
+      {{#each allDestines}}
+        <a href="/admin/{{this._id}}/validate">
 
-<h2>Expediciones Por Validar</h2>
-
-<div>
-
-    {{#each allDestines}}
-
-
-    <a href="/admin/{{this._id}}/validate">
-
-    <div class="card" style="width: 300px;">
-    <img src="{{this.image}}" class="card-img-top" alt="image" width="200px">
-    <div class="card-body">
-    <h5 class="card-title">{{this.title}}</h5>
+          <div class="card listaPorValidarCard" >
+                <img class="listaPorValidarImg"
+                src="{{this.image}}"
+                class="card-img-top"
+                alt="image"
+                />
+                <div class="card-body ">
+                    <h5 class="card-title">{{this.title}}</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{this.lider.firstName}}
+                        {{this.lider.lastName}}</li>
+                    <li class="list-group-item">{{this.formatedDate}}</li>
+                </ul>
+          </div>
+        </a>
+      {{/each}}
     </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{this.lider.firstName}} {{this.lider.lastName}}</li>
-        <li class="list-group-item">{{this.formatedDate}}</li>
-    </ul>
-    </div>
-    </a>
 
-{{/each}}
 </div>
