@@ -1,10 +1,11 @@
+<div class="signupForm">
 <div class="formulario">
   <div class="titulo-registro">
   <img src="/images/logo.png" alt="icono" width="30px" height="30px">
   <h3 class="tituloregistro">Bienvenido a NomadVentures</h3>
 </div>
 <form action="/auth/signup" method="post">
-  <div class="mb-3">
+  <div class="mb-3" style="width: 500px;">
     <label for="firstName" class="form-label">Nombre</label>
     <input type="text" class="form-control" name="firstName" >
   </div>
@@ -45,9 +46,10 @@
   </label>
 </div>
 
-   <button type="submit" class="btn btn-primary">Registrar</button>
+   <button type="submit" class="btn btn-primary signupBtn">Registrar</button>
       {{#if this.errorMessage}}
       <p style="color: red">{{this.errorMessage}}</p>
     {{/if}} 
 </form> 
+</div>
 </div>

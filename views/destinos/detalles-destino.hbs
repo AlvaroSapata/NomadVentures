@@ -1,40 +1,41 @@
-<div>
+<div class="detalles-destino">
 
   <h2>Detalles</h2>
-
-  <div class="card mb-3" style="max-width: 1200px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img
-          src="{{this.allDetails.image}}"
-          class="img-fluid rounded-start"
-          alt="image"
-          height="500px"
-        />
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">{{this.allDetails.title}}</h5>
-          <p class="card-text">{{this.allDetails.details}}</p>
-          <p class="card-text">Guia:
-            {{this.allDetails.lider.firstName}}
-            {{this.allDetails.lider.lastName}}</p>
-          <p class="card-text"><small class="text-body-secondary">Precio:
-              {{this.allDetails.price}}
-              €</small></p>
-          <p class="card-text"><small class="text-body-secondary">Plazas:
-              {{this.allDetails.maxPeople}}</small></p>
-          <p class="card-text">{{this.formatDate}}</p>
+  <div class="container-detalles">
+    <div class="card mb-3" >
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            src="{{this.allDetails.image}}"
+            class="img-fluid rounded-start"
+            alt="image"
+            height="500px"
+          />
+        </div>
+        <div class="col-md-8 " >
+          <div class="card-body datosDetalle">
+            <h5 class="card-title">{{this.allDetails.title}}</h5>
+            <p class="card-text">{{this.allDetails.details}}</p>
+            <p class="card-text">Guia:
+              {{this.allDetails.lider.firstName}}
+              {{this.allDetails.lider.lastName}}</p>
+            <p class="card-text"><small class="text-body-secondary">Precio:
+                {{this.allDetails.price}}
+                €</small></p>
+            <p class="card-text"><small class="text-body-secondary">Plazas:
+                {{this.allDetails.maxPeople}}</small></p>
+            <p class="card-text">{{this.formatDate}}</p>
+          </div>
         </div>
       </div>
+
+      <form action="/destinos/{{this.allDetails._id}}/join" method="post">
+        <button class="btn btn-primary loginBtn" type="submit" style="width:100%; position:relative; top:10px">Apuntarme al viaje</button>
+      </form>
+
     </div>
-
-    <form action="/destinos/{{this.allDetails._id}}/join" method="post">
-      <button type="submit">Apuntarme al viaje</button>
-    </form>
-
+    {{#if this.errorJoinMessage}}
+      <p style="color: red">{{this.errorJoinMessage}}</p>
+    {{/if}}
   </div>
-  {{#if this.errorJoinMessage}}
-    <p style="color: red">{{this.errorJoinMessage}}</p>
-  {{/if}}
 </div>
