@@ -21,15 +21,18 @@ Si lo que buscas es salir de la zona de confort para explorar las regiones más 
 
 
   <h1>LIDERES DE EXPEDICION</h1>
-
+{{!-- carrusel entero --}}
 <div class="contenedor-carrusel">
+  {{!-- data-bs-ride para activar el carrusel --}}
   <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+      {{!-- indicadores para navegacion --}}
     <ol class="carousel-indicators">
       {{#each this.allUsers}}
+        {{!-- primer elemento del carrusel --}}
       <li data-bs-target="#carouselExampleInterval" data-bs-slide-to="{{@index}}" {{#if @first}}class="active"{{/if}}></li>
       {{/each}}
     </ol>
-    
+      {{!-- agregar active y control de tiempo entre los intercambios y la info de cada carta --}}
     <div class="carousel-inner">
       {{#each this.allUsers}}
       <div class="carousel-item {{#if @first}}active{{/if}}" data-bs-interval="{{#if @first}}3000{{else}}3000{{/if}}">
@@ -45,6 +48,7 @@ Si lo que buscas es salir de la zona de confort para explorar las regiones más 
     </div>
   </div>
 </div>
+{{!-- botones de navegacion --}}
   <div class="flechas-carrusel">
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
