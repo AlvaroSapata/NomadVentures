@@ -10,14 +10,15 @@
     >
 
       <img src="{{this.destinoDetails.image}}" alt="image" width="200px" />
-      <div class="mb-3" style="width: 500px;" > 
+      <div class="mb-3" style="width: 500px;">
         <label for="image" class="form-label"></label>
         <input type="file" class="form-control" name="image" />
       </div>
       {{#if this.errorImageMessage}}
         <p style="color: red">{{this.errorImageMessage}}</p>
       {{/if}}
-      <button type="submit" class="btn btn-primary editarDestinoBtn">Actualizar imagen</button>
+      <button type="submit" class="btn btn-primary editarDestinoBtn">Actualizar
+        imagen</button>
     </form>
 
     <form
@@ -76,20 +77,26 @@
         <div id="detailslHelp" class="form-text">Añade una breve descripcion del
           viaje.</div>
       </div>
+      <div class="dosbotones">
 
-      <button type="submit" class="btn btn-primary editarDestinoBtn">Actualizar</button>
-
+        <button
+          type="submit"
+          class="btn btn-primary editarDestinoBtn"
+        >Actualizar</button>
+        <form
+          class="btn bnt-danger"
+          action="/destinos/{{this.destinoDetails._id}}/delete"
+          method="post"
+        >
+          <button
+            type="submit"
+            class="btn btn-primary editarDestinoBtn"
+          >Borrar</button>
+        </form>
+      </div>
       {{#if this.errorMessage}}
         <p style="color: red">{{this.errorMessage}}</p>
       {{/if}}
-    </form>
-
-    <form
-      class="btn bnt-danger"
-      action="/destinos/{{this.destinoDetails._id}}/delete"
-      method="post"
-    >
-      <button type="submit" class="btn btn-primary editarDestinoBtn">Borrar</button>
     </form>
 
   </div>

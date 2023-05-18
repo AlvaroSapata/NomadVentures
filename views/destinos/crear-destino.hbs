@@ -6,27 +6,54 @@
     <form action="/destinos/crear" method="post" enctype="multipart/form-data">
       <div class="mb-3" style="width: 500px;">
         <label for="title" class="form-label">Titulo</label>
-        <input type="text" class="form-control" name="title" />
+        <input
+          type="text"
+          class="form-control"
+          name="title"
+          value="{{this.title}}"
+        />
       </div>
 
       <div class="mb-3">
         <label for="price" class="form-label">Precio</label>
-        <input type="number" class="form-control" name="price" min="0" />
+        <input
+          type="number"
+          class="form-control"
+          name="price"
+          min="0"
+          value="{{this.price}}"
+        />
       </div>
 
       <div class="mb-3">
         <label for="date" class="form-label">Fecha</label>
-        <input type="date" class="form-control" name="date" />
+        <input
+          type="date"
+          class="form-control"
+          name="date"
+          value="{{this.date}}"
+        />
       </div>
 
       <div class="mb-3">
         <label for="maxPeople" class="form-label">Plazas</label>
-        <input type="number" class="form-control" name="maxPeople" min="1" />
+        <input
+          type="number"
+          class="form-control"
+          name="maxPeople"
+          min="1"
+          value="{{this.maxPeople}}"
+        />
       </div>
 
       <div class="mb-3">
         <label for="details" class="form-label">Detalles del viaje</label>
-        <input type="text" class="form-control" name="details" />
+        <input
+          type="text"
+          class="form-control"
+          name="details"
+          value="{{this.details}} "
+        />
         <div id="detailslHelp" class="form-text">Añade una breve descripcion del
           viaje.</div>
       </div>
@@ -37,7 +64,8 @@
         <input type="file" class="form-control" name="image" />
       </div>
 
-      <button type="submit" class="btn btn-primary crearDestinoBtn">Crear Destino</button>
+      <button type="submit" class="btn btn-primary crearDestinoBtn">Crear
+        Destino</button>
       {{#if this.errorMessage}}
         <p style="color: red">{{this.errorMessage}}</p>
       {{/if}}

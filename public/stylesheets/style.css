@@ -72,6 +72,43 @@ nav .nav-centro .loggedOff {
   position: relative;
   top: 0px;
 }
+.hr hr{
+border-top: 80px;
+color: #6f6c62;
+}
+.texto1{
+  font-size: 18px;
+}
+.texto2{
+  font-size: 18px;
+}
+.texto3{
+  font-size: 18px;
+}
+.texto4{
+  font-size: 18px;
+}
+
+.primero{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+.segundo{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+.tercero{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+.cuarto{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
 
 /* Destinos _______________________________________________ */
 
@@ -173,6 +210,25 @@ h1 {
   justify-content: center;
   text-align: center;
 }
+.errorMessage{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+/* Editar Destino___________________________________________ */
+
+.dosbotones {
+  display: flex;
+  gap: 20px
+}
+
+.botonDelete button{
+ 
+  color:#e8e0cd
+}
+
 
 /* Perfil _______________________________________________ */
 
@@ -221,7 +277,7 @@ h1 {
 /* general _________________________________________________________*/
 .btn .btn-primary {
   background-color: #6f6c62;
-  color: #000000;
+  /* color: #000000; */
 }
 
 .botonperfil {
@@ -554,6 +610,21 @@ h1 {
 .arregloCard{
   display: flex;
   flex-direction: row;
+}
+
+
+.pruebasimag {
+
+  height: 400px ;
+  width: 598px ;
+  object-fit: cover;
+}
+
+.validateImage{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /* Lista de Usuarios _______________________________________________ */
 

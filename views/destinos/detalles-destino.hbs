@@ -9,12 +9,16 @@
           <hr>
           <h5 class="card-title">{{this.allDetails.title}}</h5>
           <hr />
-          <h5 class="card-title"><small>Precio: <br> {{this.allDetails.price}} €</small> </h5>
-          <h5 class="card-title"><small>Plazas: <br> {{this.allDetails.maxPeople}}</small></h5>
-          <h5 class="card-title">Lider: <br>
-            {{this.allDetails.lider.firstName}}
-            {{this.allDetails.lider.lastName}}</h5>
-          <h5 class="card-title">Fecha: <br> {{this.formatDate}}</h5>
+          <h5 class="card-title"><small>Precio: <br> <small>{{this.allDetails.price}} €</small> </small> </h5>
+          <br>
+          <h5 class="card-title"><small>Plazas: <br> <small>{{this.allDetails.maxPeople}}</small> </small></h5>
+          <br>
+          <h5 class="card-title">Lider: <br> <small>{{this.allDetails.lider.firstName}}
+            {{this.allDetails.lider.lastName}}</small>
+            </h5>
+            <br>
+          <h5 class="card-title">Fecha: <br> <small>{{this.formatDate}}</small> </h5>
+          <hr>
           <form action="/destinos/{{this.allDetails._id}}/join" method="post" >
             <button
               class="btn btn-primary loginBtn"
@@ -26,10 +30,12 @@
       </div>
     </div>
     <div "ajuste-cartas">
+      <div class="errorMessage">
       {{#if this.errorJoinMessage}}
       <p style="color: red">{{this.errorJoinMessage}}</p>
       {{/if}}
-      <div class="detallesDetalles">
+      </div>
+      <div class="detallesDetalles" style="max-width: 1200px">
         <h5>Detalles de la expedicion</h5>
         <p class="card-text">{{this.allDetails.details}}</p>
       </div>

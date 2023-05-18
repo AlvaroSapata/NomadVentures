@@ -44,9 +44,21 @@ router.get("/crear", isLoggedIn, isGuiaOrAdmin, (req, res, next) => {
 // POST "/destinos/crear" => Crea el formulario de destinos
 router.post("/crear", uploader.single("image"), async (req, res, next) => {
   const { title, price, date, maxPeople, details, isValidated } = req.body;
-  if (req.file === undefined) {
+  if (
+    req.file === undefined ||
+    title === undefined ||
+    date === undefined ||
+    details === undefined ||
+    price === undefined ||
+    maxPeople === undefined
+  ) {
     res.render("destinos/crear-destino.hbs", {
-      errorMessage: "Debes añadir una foto al crear el destino",
+      errorMessage: "Debes añadir todos los campos",
+      title,
+      price,
+      date,
+      maxPeople,
+      details,
     });
     return;
   }
@@ -231,7 +243,7 @@ router.post("/:destinoId/join", async (req, res, next) => {
     });
     if (allDetails.joinedPeople.length >= allDetails.maxPeople) {
       res.render("destinos/detalles-destino.hbs", {
-        errorJoinMessage: "El viaje esta completo",
+        errorJoinMessage: "~ El viaje esta completo ~",
         allDetails,
         formatDate,
       });
