@@ -234,7 +234,7 @@ router.post("/:destinoId/join", async (req, res, next) => {
     const allDetails = await Destino.findById(req.params.destinoId).populate(
       "lider"
     );
-    console.log(allDetails);
+
     const formatDate = allDetails.date.toLocaleDateString("Sp-SP", {
       weekday: "long",
       year: "numeric",

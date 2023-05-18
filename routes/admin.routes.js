@@ -14,7 +14,6 @@ router.get("/validate",isLoggedIn, isAdmin,(req, res, next) => {
       .populate("lider")
       .select({ image: 1, title: 1, lider: 1, date: 1 })
       .then((allDestines) => {
-        console.log(allDestines);
         allDestines.forEach((eachDestino) => {
           eachDestino.formatedDate = eachDestino.date.toLocaleDateString(
             "Sp-SP",
@@ -41,7 +40,6 @@ router.get("/:destinoId/validate",isLoggedIn, isAdmin, (req, res, next) => {
         month: "short",
         day: "numeric",
       });
-      console.log(allDetails);
       res.render("admin/detalles-destino-validar.hbs", {
         allDetails,
         formatDate,
@@ -55,9 +53,7 @@ router.get("/:destinoId/validate",isLoggedIn, isAdmin, (req, res, next) => {
 // POST "/admin/:destinoId/validate/aceptar" => Acepta el destino
 router.post("/:destinoId/validate/aceptar", (req, res, next) => {
   Destino.findByIdAndUpdate(req.params.destinoId, { isValidated: "aceptado"},{new:true})
-  .then((allDetails)=>{
-    console.log("esteeee",allDetails)
-   
+  .then((allDetails)=>{   
     res.redirect("/admin/validate")
     })
     .catch((error)=>{

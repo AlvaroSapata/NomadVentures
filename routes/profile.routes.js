@@ -112,7 +112,7 @@ router.post("/:userId/image",uploader.single("image"),async (req, res, next) => 
         },
         { new: true }
       );
-      console.log("holaa", userDetails);
+
       res.redirect("/profile");
     } catch (error) {
       next(error);

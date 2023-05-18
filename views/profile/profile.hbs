@@ -1,5 +1,5 @@
 <div class="perfil">
-  <h1>Mi Perfil</h1>
+  <h3>Mi Perfil</h3>
 
   <div class="card mb-3 perfilCompleto" style="max-width: 700px;">
     <div class="row g-0 ">
@@ -19,10 +19,10 @@
               {{this.userDetails.lastName}}</h5>
               <br>
             <p class="card-text">Rol: {{this.userDetails.rol}}</p>
-            <br>
+
             <p class="card-text"><small class="text-body-secondary">Email:
                 {{this.userDetails.email}}</small></p>
-                <br>
+
             <p class="card-text"><small class="text-body-secondary">Telefono:
                 {{this.userDetails.phone}}</small></p>
           </div>
@@ -33,7 +33,11 @@
     </div>
   </div>
 
-  <hr style="height: 10px; width:100%">
+<div style="heigth:25px; width:100vw">
+<hr
+  style="border: none;  height: 12px; background: linear-gradient(to right, #2e2d29, #e8e0cd, #2e2d29);"
+>
+</div>
 
   <h3>Viajes a los que me he apuntado</h3>
 
@@ -57,7 +61,11 @@
     {{/each}}
   </div>
 
-<hr style="height: 10px; width:100%">
+<div style="heigth:25px; width:100vw">
+<hr
+  style="border: none;  height: 12px; background: linear-gradient(to right, #2e2d29, #e8e0cd, #2e2d29);"
+>
+</div>
 
 {{#if isUserLoggedAsUsuario}}
     {{else}}
