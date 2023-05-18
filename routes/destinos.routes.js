@@ -45,13 +45,12 @@ router.get("/crear", isLoggedIn, isGuiaOrAdmin, (req, res, next) => {
 router.post("/crear", uploader.single("image"), async (req, res, next) => {
   const { title, price, date, maxPeople, details, isValidated } = req.body;
   if (req.file === undefined) {
-    res.render("destinos/crear-destino.hbs",{
-        errorMessage: "Debes añadir una foto al crear el destino"
-    })
+    res.render("destinos/crear-destino.hbs", {
+      errorMessage: "Debes añadir una foto al crear el destino",
+    });
     return;
-   
   }
- 
+
   try {
     await Destino.create({
       title,
@@ -91,7 +90,7 @@ router.get("/:destinoId", (req, res, next) => {
 });
 
 // GET "/destinos/:destinoId/edit" => crea el formulario para editar detalles del destino
-router.get("/:destinoId/edit",isLoggedIn,isGuiaOrAdmin, (req, res, next) => {
+router.get("/:destinoId/edit", isLoggedIn, isGuiaOrAdmin, (req, res, next) => {
   Destino.findById(req.params.destinoId)
     .then((destinoDetails) => {
       formatedDate = destinoDetails.date.toISOString().slice(0, 10);
@@ -219,16 +218,25 @@ router.post("/menorMayor", (req, res, next) => {
 });
 
 router.post("/:destinoId/join", async (req, res, next) => {
-   try{
-    const allDetails = await Destino.findById(req.params.destinoId)
+  try {
+    const allDetails = await Destino.findById(req.params.destinoId).populate(
+      "lider"
+    );
     console.log(allDetails);
-    if(allDetails.joinedPeople.length>= allDetails.maxPeople){
+    const formatDate = allDetails.date.toLocaleDateString("Sp-SP", {
+      weekday: "long",
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+    if (allDetails.joinedPeople.length >= allDetails.maxPeople) {
       res.render("destinos/detalles-destino.hbs", {
         errorJoinMessage: "El viaje esta completo",
-        allDetails})
-    }else{
+        allDetails,
+        formatDate,
+      });
+    } else {
       try {
-    
         const userDetails = await User.findByIdAndUpdate(
           req.session.loggedUser._id,
           { $addToSet: { viajesApuntado: req.params.destinoId } },
@@ -241,17 +249,14 @@ router.post("/:destinoId/join", async (req, res, next) => {
           { new: true }
         );
 
-      
         res.redirect("/profile");
       } catch (error) {
         next(error);
-      }  
+      }
     }
-   }catch (error) {
-    next(error);}
-
-  
+  } catch (error) {
+    next(error);
+  }
 });
-
 
 module.exports = router;

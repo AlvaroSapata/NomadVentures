@@ -1,8 +1,47 @@
-<div class="detalles-destino">
+<div class="detallesDestinoValidar">
+  <h2>Detalles Destino</h2>
+  <div>
+    <div class="card arregloCard" style="width: 1200px; height:650px">
+      <img src="{{this.allDetails.image}}" class="card-img-top" alt="image" style="width:750px"/>
+      <div class="card-body detallesDestinoValidarTexts">
+        <div>
+          <img src="/images/logo-removebg-preview.png" alt="imagen" style="width:70px">
+          <hr>
+          <h5 class="card-title">{{this.allDetails.title}}</h5>
+          <hr />
+          <h5 class="card-title"><small>Precio: <br> {{this.allDetails.price}} €</small> </h5>
+          <h5 class="card-title"><small>Plazas: <br> {{this.allDetails.maxPeople}}</small></h5>
+          <h5 class="card-title">Lider: <br>
+            {{this.allDetails.lider.firstName}}
+            {{this.allDetails.lider.lastName}}</h5>
+          <h5 class="card-title">Fecha: <br> {{this.formatDate}}</h5>
+          <form action="/destinos/{{this.allDetails._id}}/join" method="post" >
+            <button
+              class="btn btn-primary loginBtn"
+              type="submit"
+              style="width:100%; position:relative; top:10px"
+            >Apuntarme al viaje</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div "ajuste-cartas">
+      {{#if this.errorJoinMessage}}
+      <p style="color: red">{{this.errorJoinMessage}}</p>
+      {{/if}}
+      <div class="detallesDetalles">
+        <h5>Detalles de la expedicion</h5>
+        <p class="card-text">{{this.allDetails.details}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- <div class="detalles-destino">
 
   <h2>Detalles</h2>
   <div class="container-detalles">
-    <div class="card mb-3" >
+    <div class="card mb-3">
       <div class="row g-0">
         <div class="col-md-4">
           <img
@@ -12,10 +51,10 @@
             height="500px"
           />
         </div>
-        <div class="col-md-8 " >
+        <div class="col-md-8">
           <div class="card-body datosDetalle">
             <h5 class="card-title">{{this.allDetails.title}}</h5>
-            <p class="card-text">{{this.allDetails.details}}</p>
+
             <p class="card-text">Guia:
               {{this.allDetails.lider.firstName}}
               {{this.allDetails.lider.lastName}}</p>
@@ -24,18 +63,25 @@
                 €</small></p>
             <p class="card-text"><small class="text-body-secondary">Plazas:
                 {{this.allDetails.maxPeople}}</small></p>
+            <br />
             <p class="card-text">{{this.formatDate}}</p>
           </div>
         </div>
       </div>
 
       <form action="/destinos/{{this.allDetails._id}}/join" method="post">
-        <button class="btn btn-primary loginBtn" type="submit" style="width:100%; position:relative; top:10px">Apuntarme al viaje</button>
+        <button
+          class="btn btn-primary loginBtn"
+          type="submit"
+          style="width:100%; position:relative; top:10px"
+        >Apuntarme al viaje</button>
       </form>
-
-    </div>
-    {{#if this.errorJoinMessage}}
+      {{#if this.errorJoinMessage}}
       <p style="color: red">{{this.errorJoinMessage}}</p>
     {{/if}}
+    </div>
   </div>
-</div>
+</div> --}}
+
+
+{{! ____________________________________________________}}

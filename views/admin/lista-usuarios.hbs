@@ -5,12 +5,16 @@
 
       {{#each allUsers}}
 
-        <div class="card mb-3">
+        <div class="card mb-3 cartaListaUsuario" style="max-height: 400px;">
           <div class="row g-0">
-            <div class="col-md-8">
-              <img class="listaUsuariosImg" src="{{this.image}}" alt="imagen">
-
-              <div class="card-body">
+            <div class="col-md-8 ">
+            
+              <div class="card-body informacionUsuario">
+                <img
+                  class="listaUsuariosImg"
+                  src="{{this.image}}"
+                  alt="imagen"
+                />
                 <h5 class="card-title">{{this.firstName}} {{this.lastName}}</h5>
                 <p class="card-text">{{this.email}}</p>
                 <p class="card-text">{{this.phone}}</p>
@@ -25,7 +29,7 @@
             <button
               class="btn btn-primary listaUsuariosBtn"
               type="submit"
-            >Borrar Usuario</button>
+            >Eliminar Usuario</button>
           </form>
         </div>
 

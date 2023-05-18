@@ -1,21 +1,18 @@
 <div class="detallesDestinoValidar">
   <h2>Detalles Destino a Validar</h2>
   <div>
-    <div class="card" style="width: 600px;">
-      <img
-        src="{{this.allDetails.image}}"
-        class="card-img-top"
-        alt="image"
-        width="200px"
-      />
+    <div class="card" style="width: 600px; height:690px">
+      <img src="{{this.allDetails.image}}" class="card-img-top" alt="image" />
       <div class="card-body detallesDestinoValidarTexts">
         <div>
           <h5 class="card-title">{{this.allDetails.title}}</h5>
-          <h5 class="card-title">{{this.allDetails.price}}</h5>
-          <h5 class="card-title">{{this.formatDate}}</h5>
-          <h5 class="card-title">{{this.allDetails.maxPeople}}</h5>
-          <h5 class="card-title">{{this.allDetails.lider.firstName}}
-            {{this.allDetails.lider.lastName}}</h5>
+          <hr />
+          <h6 class="card-title">Precio: {{this.allDetails.price}} €</h6>
+          <h6 class="card-title">Plazas: {{this.allDetails.maxPeople}}</h6>
+          <h6 class="card-title">Lider:
+            {{this.allDetails.lider.firstName}}
+            {{this.allDetails.lider.lastName}}</h6>
+          <h6 class="card-title">Fecha: {{this.formatDate}}</h6>
         </div>
         <div class="detallesDestinoValidarBtns">
           <form

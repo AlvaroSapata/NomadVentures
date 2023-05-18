@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const {updateLocals} = require("../middlewares/auth.middleware.js")
-// Quiero que en todas las rutas tenga acceso a isUserActive
+// Quiero que en todas las rutas tenga acceso a isUserLogged / ...
 router.use(updateLocals)
 
 // GET "/" => Renderiza home

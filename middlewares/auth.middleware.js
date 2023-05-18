@@ -44,34 +44,29 @@ function isGuiaOrAdmin(req, res, next) {
 // Se usa en todo el documento para visualizaciones
 function updateLocals(req, res, next) {
   // Usuario logueado => isUserLogged
-  // Usuario user => isUserLoggedAsUser
-  // Usuario guia => isUserLoggedAsGuide
+  // Usuario user => isUserLoggedAsUsuario
+  // Usuario guia => isUserLoggedAsGuia
   // Usuario admin => isUserLoggedAsAdmin
-  // Usuario guia o admin => isUserLoggedAsGuideOrAdmin
 
   if (req.session.loggedUser === undefined) {
     res.locals.isUserLogged = false;
     res.locals.isUserLoggedAsUsuario = false;
     res.locals.isUserLoggedAsGuia = false;
-
     res.locals.isUserLoggedAsAdmin = false;
   } else if (req.session.loggedUser.rol === "admin") {
     res.locals.isUserLogged = true;
     res.locals.isUserLoggedAsUsuario = false;
     res.locals.isUserLoggedAsGuia = false;
-
     res.locals.isUserLoggedAsAdmin = true;
   } else if (req.session.loggedUser.rol === "guia") {
     res.locals.isUserLogged = true;
     res.locals.isUserLoggedAsUsuario = false;
     res.locals.isUserLoggedAsGuia = true;
-
     res.locals.isUserLoggedAsAdmin = false;
   } else if (req.session.loggedUser.rol === "usuario") {
     res.locals.isUserLogged = true;
     res.locals.isUserLoggedAsUsuario = true;
     res.locals.isUserLoggedAsGuia = false;
-
     res.locals.isUserLoggedAsAdmin = false;
   }
 

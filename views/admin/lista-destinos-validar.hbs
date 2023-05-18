@@ -1,20 +1,22 @@
 <div class="listaPorValidar">
   <div>
     <h2>Expediciones Por Validar</h2>
-    <div class="listaPorValidarContainer">
+    <div class="listaPorValidarContainer" style="max-width: 500px;">
       {{#each allDestines}}
         <a href="/admin/{{this._id}}/validate">
 
           <div class="card listaPorValidarCard" >
-                <img class="listaPorValidarImg"
+                <img
                 src="{{this.image}}"
-                class="card-img-top"
+                class="card-img listaPorValidarImg"
                 alt="image"
+                height="300px"
+                width="300px"
                 />
                 <div class="card-body ">
-                    <h5 class="card-title">{{this.title}}</h5>
-                    </div>
-                    <ul class="list-group list-group-flush">
+                  <h5 class="card-title">{{this.title}}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
                     <li class="list-group-item">{{this.lider.firstName}}
                         {{this.lider.lastName}}</li>
                     <li class="list-group-item">{{this.formatedDate}}</li>

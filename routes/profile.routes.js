@@ -31,6 +31,7 @@ router.get("/",isLoggedIn, async (req, res, next) => {
     res.render("profile/profile.hbs", {
       allDestines,
       userDetails,
+      isUserLoggedAsUsuario:res.locals.isUserLoggedAsUsuario,
     });
   } catch (error) {
     next(error);

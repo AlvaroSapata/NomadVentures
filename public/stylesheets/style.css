@@ -130,11 +130,16 @@ h1 {
 }
 
 /* Destinos Detalles _______________________________________________ */
+.detalles-destino p{
+  font-size: 18px;
+}
+
 .detalles-destino h2 {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
   color: #e8e0cd;
+  
 }
 .detalles-destino img {
   height: 300px;
@@ -153,7 +158,41 @@ h1 {
   gap: 10px;
 }
 
+.detalles-destino h5{
+  font-size: 23px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+ 
+} 
+
+.detallesDetalles{
+  color:#e8e0cd; ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 /* Perfil _______________________________________________ */
+
+.perfil{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #e8e0cd;
+}
+
+.perfil h3 {
+  display: flex;
+  justify-content: center;
+  margin: 0px 0px 20px 0px;
+}
+
+.perfil h1 {
+  margin-bottom: 20px;
+
+}
 
 .lista-destinos-perfil {
   display: flex;
@@ -175,11 +214,9 @@ h1 {
   flex-direction: column;
 }
 
-.perfil h3 {
-  display: flex;
-  justify-content: center;
-  margin: 0px 0px 20px 0px;
-}
+
+
+
 
 /* general _________________________________________________________*/
 .btn .btn-primary {
@@ -215,9 +252,17 @@ h1 {
 }
 
 .imagenpPerfil img {
-  height: 160px;
+  height: 200px;
   width: 200px;
   object-fit: cover;
+  margin-left: 50px;
+}
+
+.ajustarPerfilBtn{
+  margin-left: 50px;
+}
+.ajustarPerfilBtn2{
+  margin-top: 17px;
 }
 
 .perfil h1 {
@@ -227,10 +272,11 @@ h1 {
 
 .perfilCompleto {
   background-color: #000000;
-
   display: flex;
   justify-content: center;
   align-self: center;
+  width: 700px;
+  height: 300px;
 }
 /* Botones */
 
@@ -238,8 +284,8 @@ h1 {
   background-color: #6f6c62;
   border-color: #6f6c62;
   color: #e8e0cd;
-  font-size: 12px;
-  width: 100px;
+  font-size: 14px;
+  width: 150px;
 }
 .perfilBtn:hover {
   color: #ffffff;
@@ -250,11 +296,13 @@ h1 {
   border-color: #a7a194;
 }
 
+
+
 .signupBtn {
   background-color: #6f6c62;
   border-color: #6f6c62;
   color: #e8e0cd;
-  font-size: 12px;
+  font-size: 14px;
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
@@ -272,7 +320,7 @@ h1 {
   background-color: #6f6c62;
   border-color: #6f6c62;
   color: #e8e0cd;
-  font-size: 12px;
+  font-size: 14px;
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
@@ -290,7 +338,7 @@ h1 {
   background-color: #6f6c62;
   border-color: #6f6c62;
   color: #e8e0cd;
-  font-size: 12px;
+  font-size: 14px;
 }
 .detallelBtn:hover {
   color: #ffffff;
@@ -305,7 +353,7 @@ h1 {
   background-color: #6f6c62;
   border-color: #6f6c62;
   color: #e8e0cd;
-  font-size: 12px;
+  font-size: 14px;
 }
 .crearDestinoBtn:hover {
   color: #ffffff;
@@ -320,7 +368,7 @@ h1 {
   background-color: #6f6c62;
   border-color: #6f6c62;
   color: #e8e0cd;
-  font-size: 12px;
+  font-size: 14px;
 }
 .editarDestinoBtn:hover {
   color: #ffffff;
@@ -335,6 +383,13 @@ h1 {
   display: flex;
   flex-direction: column;
   height: 100%;
+  margin-left: 60px;
+  background-color: transparent!important;
+}
+
+.contenedorDatosUsuario{
+  margin-top: 0px;
+  font-size: 1.3em;
 }
 
 .list-group-item {
@@ -346,7 +401,6 @@ h1 {
 .card {
   color: black;
   background-color: #000000;
-  height: 300px;
   margin: 0px 20px 20px 20px;
   text-align: center;
   border-color: #e8e0cd;
@@ -391,7 +445,6 @@ h1 {
   border-width: 2px;
 } */
 
-
 /* Login _______________________________________________ */
 .loginForm {
   display: flex;
@@ -419,40 +472,35 @@ h1 {
 
 /* expediciones por validar _______________________________________________ */
 
-.listaPorValidar{
+.listaPorValidar {
   display: flex;
   justify-content: center;
   color: #e8e0cd;
 }
 
-.listaPorValidar a{
-text-decoration: none;
+.listaPorValidar a {
+  text-decoration: none;
 }
-.listaPorValidar h2{
-display: flex;
-justify-content: center;
-margin-bottom: 20px;
-}
-
-.listaPorValidarContainer{
+.listaPorValidar h2 {
   display: flex;
   justify-content: center;
-
+  margin-bottom: 20px;
 }
 
-.card .listaPorValidarCard{
-  height: 300px;
+.listaPorValidarContainer {
+  display: flex;
+  justify-content: center;
 }
-
-.listaPorValidarImg{
-  height: 300px;
-  width: 300px;
+ 
+.listaPorValidarImg {
+  height: 300px ;
+  width: 300px ;
   object-fit: cover;
 }
 
 /* Destalles destino por validar _______________________________________________ */
 
-.detallesDestinoValidar{
+.detallesDestinoValidar {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -460,20 +508,26 @@ margin-bottom: 20px;
   color: #e8e0cd;
 }
 
-.detallesDestinoValidar h2{
-margin-bottom: 20px;
+.detallesDestinoValidar h2 {
+  margin-bottom: 20px;
 }
 
-.detallesDestinoValidarTexts{
-display: flex;
-flex-direction: column;
+.detallesDestinoValidar h5 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  
 }
 
-.detallesDestinoValidarBtns{
+.detallesDestinoValidarTexts {
   display: flex;
-  gap: 30px;
+  flex-direction: column;
 }
 
+.detallesDestinoValidarBtns {
+  display: flex;
+  gap: 35px;
+  margin-top:6px ;
+}
 
 .detallesDestinoValidarBTN {
   display: flex;
@@ -497,17 +551,22 @@ flex-direction: column;
   text-underline-offset: 5px;
 }
 
+.arregloCard{
+  display: flex;
+  flex-direction: row;
+}
 /* Lista de Usuarios _______________________________________________ */
 
-.listaUsuarios{
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+.listaUsuarios {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #e8e0cd;
 }
 
-.listaUsuarios h1{
-margin-bottom: 20px;
+.listaUsuarios h1 {
+  margin-bottom: 20px;
 }
 
 .listaUsuariosBtn {
@@ -519,8 +578,8 @@ margin-bottom: 20px;
   padding-bottom: 10px;
   padding-top: 10px;
   border-radius: 5px;
-  width: 100%;
-  margin-top: 10px;
+  width: 260px;
+  margin-top: 0px;
   border-color: #6f6c62;
 }
 
@@ -533,23 +592,44 @@ margin-bottom: 20px;
   text-underline-offset: 5px;
 }
 
-.listaUsuariosContainer{
+.listaUsuariosContainer {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
 }
 
-.listaUsuariosImg{
+.listaUsuariosImg {
   height: 170px;
   width: 170px;
   object-fit: cover;
-
+  margin-bottom: 20px;
 }
+
+.informacionUsuario {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+}
+
+.cartaListaUsuario{
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+
+
 /* About  _______________________________________________ */
 .about-slide {
   color: #e8e0cd;
   display: flex;
   flex-direction: column;
 }
-.about-slide h3{
+.about-slide h3 {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
@@ -563,15 +643,15 @@ margin-bottom: 20px;
 .carousel-indicators {
   position: absolute;
   top: 400px;
-  margin-bottom: 0;
-  margin-left: 0;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: 0;
+
   padding: 0;
 
   list-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  
+} 
 
 .contenedor-carrusel {
   width: 1000px;
@@ -585,9 +665,22 @@ margin-bottom: 20px;
 .flechas-carrusel {
   position: relative;
   bottom: 200px;
+  height: 20px;
+  width:600px;
+  
 }
 
-.aboutTextos{
+.aboutTextos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carousel-item{
+  padding-left: 30%;
+}
+
+#liders-container {
   display: flex;
   flex-direction: column;
   align-items: center;
