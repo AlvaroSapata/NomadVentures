@@ -229,6 +229,7 @@ router.post("/menorMayor", (req, res, next) => {
     });
 });
 
+//POST "/destinos/:destinoId/join" => Añade el destino a la lista de apuntados del usuario
 router.post("/:destinoId/join", async (req, res, next) => {
   try {
     const allDetails = await Destino.findById(req.params.destinoId).populate(
@@ -241,6 +242,9 @@ router.post("/:destinoId/join", async (req, res, next) => {
       month: "short",
       day: "numeric",
     });
+    if (req.session.loggedUser===undefined){
+      res.redirect("/auth/login")
+    }
     if (allDetails.joinedPeople.length >= allDetails.maxPeople) {
       res.render("destinos/detalles-destino.hbs", {
         errorJoinMessage: "~ El viaje esta completo ~",

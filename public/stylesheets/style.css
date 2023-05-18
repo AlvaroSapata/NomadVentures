@@ -10,7 +10,7 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: black;
-  color: white;
+  color: #e8e0cd;
   /*  font-family: 'Bebas Neue', sans-serif; */
   font-family: "Teko", sans-serif;
   font-size: 1.1em;
@@ -104,28 +104,27 @@ nav .nav-centro .loggedOff {
 .primero {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 40px;
 }
 .segundo {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 40px;
 }
 .tercero {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 40px;
 }
 .cuarto {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 40px;
 }
 
-.flechasIndex{
+.flechasIndex {
   display: flex;
   justify-content: center;
-  
 }
 
 /* Destinos _______________________________________________ */
@@ -154,7 +153,7 @@ nav .nav-centro .loggedOff {
     #000000
   );
   color: #e8e0cd;
-  font-size: 13px;
+  font-size: 17px;
   width: 80vw;
   margin-top: 20px;
   margin-bottom: 10px;
@@ -189,9 +188,11 @@ nav .nav-centro .loggedOff {
 
 .dropdown-menu .ab:hover,
 .dropdown-menu .bc:hover {
+  color: #ffffff;
   text-decoration: underline;
   text-decoration-thickness: 3px;
   text-underline-offset: 8px;
+
 }
 
 .titulo-expediciones {
@@ -588,6 +589,8 @@ h1 {
 
 .listaPorValidarContainer {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -818,3 +821,32 @@ h1 {
   margin-bottom: 30px;
   gap: 80px;
 }
+
+footer {
+  border: none;
+  height: 20px;
+  background: linear-gradient(to right, #000000,#000000, #2e2d29,#2e2d29,#2e2d29,#000000, #000000);
+  width: 90vw;
+
+  margin-top: 100px;
+}
+
+footer h6{
+  color: #e8e0cd;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  gap: 10px;
+}
+
+footer a{
+  text-decoration: none;
+  color: #e8e0cd;
+}
+
+footer a:hover{
+  color: #ffffff;
+  font-weight: bolder;
+}
+
