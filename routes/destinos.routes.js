@@ -17,7 +17,6 @@ const {
 // GET "/destinos" => Renderizar la lista de destinos
 router.get("/", (req, res, next) => {
   Destino.find({ isValidated: "aceptado" })
-
     .populate("lider")
     .select({ image: 1, title: 1, lider: 1, date: 1, price: 1 })
     .then((allDestines) => {
@@ -242,8 +241,8 @@ router.post("/:destinoId/join", async (req, res, next) => {
       month: "short",
       day: "numeric",
     });
-    if (req.session.loggedUser===undefined){
-      res.redirect("/auth/login")
+    if (req.session.loggedUser === undefined) {
+      res.redirect("/auth/login");
     }
     if (allDetails.joinedPeople.length >= allDetails.maxPeople) {
       res.render("destinos/detalles-destino.hbs", {

@@ -39,7 +39,7 @@
             <br />
             <small>{{this.formatDate}}</small>
           </h5>
-         
+
           <form action="/destinos/{{this.allDetails._id}}/join" method="post">
             <button
               class="btn btn-primary loginBtn"
@@ -56,11 +56,11 @@
           <p style="color: red">{{this.errorJoinMessage}}</p>
         {{/if}}
       </div>
-      
-          <hr
-            style="border: none;  height: 12px; background: linear-gradient(to right, #000000, #e8e0cd, #000000);"
-          />
-        
+
+      <hr
+        style="border: none;  height: 12px; background: linear-gradient(to right, #000000, #e8e0cd, #000000);"
+      />
+
       <div class="detallesDetalles" style="max-width: 1200px">
         <h5>Detalles de la expedicion</h5>
         <p class="card-text">{{this.allDetails.details}}</p>

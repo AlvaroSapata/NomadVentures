@@ -11,10 +11,8 @@ router.get("/signup", (req, res, next) => {
 
 // POST "/auth/signup" => Envia el formulario de registro
 router.post("/signup", async (req, res, next) => {
-
   const { firstName, lastName, email, password, phone, rol, image } = req.body;
   const regexPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
-
 
   // Campos vacios
   if (
@@ -56,7 +54,8 @@ router.post("/signup", async (req, res, next) => {
       password: hashPassword,
       phone,
       rol,
-      image: "https://res.cloudinary.com/dc7zm1bwc/image/upload/v1684256331/image_ezsymg.png"
+      image:
+        "https://res.cloudinary.com/dc7zm1bwc/image/upload/v1684256331/image_ezsymg.png",
     });
 
     res.redirect("/auth/login");
@@ -87,7 +86,7 @@ router.post("/login", async (req, res, next) => {
       });
       return;
     }
-    
+
     const isPasswordCorrect = await bcrypt.compare(
       password,
       foundUser.password
@@ -105,17 +104,16 @@ router.post("/login", async (req, res, next) => {
     req.session.save(() => {
       res.redirect("/");
     });
-  
   } catch (error) {
     next(error);
   }
 });
 
 // GET "/auth/logout" => Destruye la sesion activa
-router.get("/logout",(req,res,next)=>{
-  req.session.destroy(()=>{
-    res.redirect("/")
-  })
-})
+router.get("/logout", (req, res, next) => {
+  req.session.destroy(() => {
+    res.redirect("/");
+  });
+});
 
 module.exports = router;

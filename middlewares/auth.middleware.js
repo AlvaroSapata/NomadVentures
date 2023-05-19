@@ -34,7 +34,10 @@ function isUsuario(req, res, next) {
 }
 
 function isGuiaOrAdmin(req, res, next) {
-  if (req.session.loggedUser.rol === "guia" || req.session.loggedUser.rol === "admin") {
+  if (
+    req.session.loggedUser.rol === "guia" ||
+    req.session.loggedUser.rol === "admin"
+  ) {
     next();
   } else {
     res.redirect("/");
@@ -81,5 +84,5 @@ module.exports = {
   isAdmin: isAdmin,
   isGuia: isGuia,
   isUsuario: isUsuario,
-  isGuiaOrAdmin: isGuiaOrAdmin
+  isGuiaOrAdmin: isGuiaOrAdmin,
 };

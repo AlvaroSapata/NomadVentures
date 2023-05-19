@@ -8,7 +8,7 @@ const destinoSchema = new Schema({
   price: {
     type: Number,
     required: true,
-    min: 0
+    min: 0,
   },
   date: {
     type: Date,
@@ -17,7 +17,7 @@ const destinoSchema = new Schema({
   maxPeople: {
     type: Number,
     required: true,
-    min: 1
+    min: 1,
   },
   lider: {
     type: Schema.Types.ObjectId,
@@ -40,7 +40,6 @@ const destinoSchema = new Schema({
   joinedPeople: {
     type: [Schema.Types.ObjectId],
     ref: "User",
-    
   },
 });
 

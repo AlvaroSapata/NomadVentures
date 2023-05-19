@@ -1,12 +1,12 @@
 <div>
 
-<form
+  <form
     action="/profile/{{this.userDetails._id}}/image"
     method="post"
     enctype="multipart/form-data"
   >
 
-  <img src="{{this.userDetails.image}}" alt="image" width="200px">
+    <img src="{{this.userDetails.image}}" alt="image" width="200px" />
     <div class="mb-3">
       <label for="image" class="form-label"></label>
       <input type="file" class="form-control" name="image" />
@@ -16,7 +16,5 @@
     {{/if}}
     <button type="submit" class="btn btn-primary">Actualizar imagen</button>
   </form>
-
-
 
 </div>

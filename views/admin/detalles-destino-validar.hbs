@@ -1,10 +1,14 @@
 <div class="detallesDestinoValidar">
   <h3>Detalles Destino a Validar</h3>
   <div>
-    
+
     <div class="card" style="width: 600px; height:730px">
       <div class="validateImage">
-        <img src="{{this.allDetails.image}}" class="card-img-top pruebasimag" alt="image" />
+        <img
+          src="{{this.allDetails.image}}"
+          class="card-img-top pruebasimag"
+          alt="image"
+        />
       </div>
       <div class="card-body detallesDestinoValidarTexts">
         <div>
@@ -16,9 +20,9 @@
             {{this.allDetails.lider.firstName}}
             {{this.allDetails.lider.lastName}}</h6>
           <h6 class="card-title">Fecha: {{this.formatDate}}</h6>
-          <hr>
+          <hr />
         </div>
-        
+
         <div class="detallesDestinoValidarBtns">
           <form
             action="/admin/{{this.allDetails._id}}/validate/aceptar"

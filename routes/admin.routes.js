@@ -29,6 +29,7 @@ router.get("/validate",isLoggedIn, isAdmin,(req, res, next) => {
       });
   });
 
+  
 // GET "/admin/:destinoId/validate" => Detalles del destino
 router.get("/:destinoId/validate",isLoggedIn, isAdmin, (req, res, next) => {
   Destino.findById(req.params.destinoId)

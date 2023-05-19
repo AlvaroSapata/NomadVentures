@@ -34,38 +34,37 @@
 </div>
 
 <div class="lista-destinos">
-    {{#each allDestines}}
-      <a href="/destinos/{{this._id}}">
-        <div class="card" style="width: 300px; height: 440px" >
-          <div>
+  {{#each allDestines}}
+    <a href="/destinos/{{this._id}}">
+      <div class="card" style="width: 300px; height: 440px">
+        <div>
           <img
             src="{{this.image}}"
             class="card-img-top"
             alt="image"
             width="200px"
-            
           />
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">{{this.title}}</h5>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              
-              {{! imagen }}
-              {{this.lider.firstName}}
-              {{this.lider.lastName}}
-            </li>
-            <li class="list-group-item">
-              {{this.price}}
-              €
-            </li>
-            <li class="list-group-item">
-              {{! imagen }}
-              {{this.formatedDate}}
-            </li>
-          </ul>
         </div>
-      </a>
-    {{/each}}
+        <div class="card-body">
+          <h5 class="card-title">{{this.title}}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+
+            {{! imagen }}
+            {{this.lider.firstName}}
+            {{this.lider.lastName}}
+          </li>
+          <li class="list-group-item">
+            {{this.price}}
+            €
+          </li>
+          <li class="list-group-item">
+            {{! imagen }}
+            {{this.formatedDate}}
+          </li>
+        </ul>
+      </div>
+    </a>
+  {{/each}}
 </div>
