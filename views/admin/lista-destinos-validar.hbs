@@ -1,7 +1,7 @@
 <div class="listaPorValidar">
   <div>
     <h3>Expediciones Por Validar</h3>
-    <div class="listaPorValidarContainer" style="max-width: 300px;">
+    <div class="listaPorValidarContainer" >
       {{#each allDestines}}
         <a href="/admin/{{this._id}}/validate">
 
@@ -13,8 +13,8 @@
                 height="300px"
                 width="300px"
                 />
-                <div class="card-body ">
-                  <h5 class="card-title">{{this.title}}</h5>
+                <div class="card-body textwrap">
+                  <h5 class="card-title ">{{this.title}}</h5>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">{{this.lider.firstName}}

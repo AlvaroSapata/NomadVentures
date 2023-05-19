@@ -16,6 +16,7 @@ body {
   font-size: 1.1em;
   letter-spacing: 0.08em;
   word-spacing: 0.1em;
+  position: relative;
 }
 
 /* Barra de navegacion _______________________________________________ */
@@ -574,8 +575,10 @@ h1 {
 
 .listaPorValidar {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   color: #e8e0cd;
+  align-items: center;
 }
 
 .listaPorValidar a {
@@ -781,6 +784,8 @@ h1 {
   bottom: 200px;
   height: 20px;
   width: 600px;
+  margin-bottom: 100px;
+
 }
 
 .aboutTextos {
@@ -827,8 +832,12 @@ footer {
   height: 20px;
   background: linear-gradient(to right, #000000,#000000, #2e2d29,#2e2d29,#2e2d29,#000000, #000000);
   width: 90vw;
-
+  position: absolute;
+  bottom: 20;
+  left: 80;
+  right: 0;
   margin-top: 100px;
+
 }
 
 footer h6{
@@ -850,3 +859,8 @@ footer a:hover{
   font-weight: bolder;
 }
 
+.textwrap{
+  width: 300px;
+  word-break:normal;
+  height: 60px;
+}
