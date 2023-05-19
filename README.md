@@ -6,8 +6,8 @@
 
 ## Description
 
-**NOTE -** Describe your project in one/two lines.
- 
+NomadVentures es un proyecto de viajes de autor donde guias y usuarios interaccionan entre si, creando y apuntandose a distintos destinos
+
 ## User Stories
 
 **NOTE -**  List here all the actions a user can do in the app. Example:
@@ -23,11 +23,15 @@
 
 ## Backlog Functionalities
 
-**NOTE -** List here all functionalities you wish to add to your proyect later.
+- Añadir multiples imagenes a los destinos
+- Añadir videos especificos a los destinos
+- Interaccion entre usuarios
+- filtrados por paises
+- Crear una funcionalidad tipo red social donde se puedan subir fotos relacionadas con algun destino/pais, y que los demas usuarios puedan verlas y actuar sobre ellas
 
 ## Technologies used
 
-**NOTE -** List here all technologies used in the project like HTML, CSS, Javascript, Node, Express, Handlebars, Sessions & Cookies, etc.
+HTML, CSS, Javascript, Node, Express, Handlebars, Sessions & Cookies, etc.
 
 
 ## (Optional) Routes
@@ -168,9 +172,6 @@ title: {
 
 [Deploy Link](https://nomadventures.adaptable.app/)
 
-### Trello
-
-[Link to your trello board](www.your-trello-url-here.com)
 
 ### Slides
 
