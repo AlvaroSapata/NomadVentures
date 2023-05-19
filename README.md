@@ -109,28 +109,64 @@ firstName: {
   },
 ```
 
-Event model
+Destino model
 
 ```
-owner: ObjectId<User>
-name: String
-description: String
-date: Date
+title: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+    min: 0,
+  },
+  date: {
+    type: Date,
+    required: true,
+  },
+  maxPeople: {
+    type: Number,
+    required: true,
+    min: 1,
+  },
+  lider: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  details: {
+    type: String,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: false,
+  },
+  isValidated: {
+    type: String,
+    enum: ["pendiente", "rechazado", "aceptado"],
+    default: "pendiente",
+  },
+  joinedPeople: {
+    type: [Schema.Types.ObjectId],
+    ref: "User",
+  },
 ``` 
 
 ## Links
 
 ## Collaborators
 
-[Developer 1 name](www.github-url.com)
+[Alvaro Martinez](https://github.com/AlvaroSapata)
 
-[Developer 2 name](www.github-url.com)
+[Jonathan Iglesias](https://github.com/Johnny-Ig)
 
 ### Project
 
-[Repository Link](www.your-github-url-here.com)
+[Repository Link](https://github.com/AlvaroSapata/NomadVentures)
 
-[Deploy Link](www.your-deploy-url-here.com)
+[Deploy Link](https://nomadventures.adaptable.app/)
 
 ### Trello
 
