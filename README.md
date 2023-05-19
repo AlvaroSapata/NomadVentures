@@ -2,7 +2,8 @@
 
 ## [See the App!](https://nomadventures.adaptable.app/)
 
-![App Logo](your-image-logo-path-or-name)
+![App Logo](![logo](https://github.com/AlvaroSapata/NomadVentures/assets/128697569/a9b0ea79-31fb-4079-919e-fade34685f30)
+)
 
 ## Description
 
@@ -10,16 +11,38 @@ NomadVentures es un proyecto de viajes de autor donde guias y usuarios interacci
 
 ## User Stories
 
-**NOTE -**  List here all the actions a user can do in the app. Example:
+- **User** -  User: Como User puede hacer el Registro en la pagina web.
+- **User** -  User: Como User puede hacer el Login en la pagina web.
+- **User** -  User: Como User puede navegar en la barra Destinos.
+- **User** -  User: Como User puede apuntarse a un Destino.
+- **User** -  User: Como User puede Editar su perfil y ver los viajes que ha realizado.
+- **User** -  User: Como User puede ver los detalles de cada destino.
+- **User** -  User: Como User puede acceder a la página Sobre Nosotros.
 
-- **404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault 
-- **500** - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault
-- **homepage** - As a user I want to be able to access the homepage so that I see what the app is about and login and signup
-- **sign up** - As a user I want to sign up on the webpage so that I can see all the events that I could attend
-- **login** - As a user I want to be able to log in on the webpage so that I can get back to my account
-- **logout** - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account
-- **events list** - As a user I want to see all the events available so that I can choose which ones I want to attend
-- **events create** - As a user I want to create an event so that I can invite others to attend
+
+- **Guia** -  Guia: Como Guia puede hacer el Registro en la pagina web.
+- **Guia** -  Guia: Como Guia puede hacer el Login en la pagina web. 
+- **Guia** -  Guia: Como Guia puede navegar en la barra Destinos.
+- **Guia** -  Guia: Como Guia puede apuntarse a un Destino.
+- **Guia** -  Guia: Como Guia puede Editar su perfil y ver los viajes que ha realizado.
+- **Guia** -  Guia: Como Guia puede ver los detalles de cada destino.
+- **Guia** -  Guia: Como Guia puede acceder a la página Sobre Nosotros.
+- **Guia** -  Guia: Como Guia puede acceder a crear un nuevo viaje.
+- **Guia** -  Guia: Como Guia puede acceder a ver todos los viajes que ha creado 
+
+- **Admin** -  Admin: Como Admin puede hacer el Registro en la pagina web.
+- **Admin** -  Admin: Como Admin puede hacer el Login en la pagina web. 
+- **Admin** -  Admin: Como Admin puede navegar en la barra Destinos.
+- **Admin** -  Admin: Como Admin puede apuntarse a un Destino.
+- **Admin** -  Admin: Como Admin puede Editar su perfil y ver los viajes que ha realizado.
+- **Admin** -  Admin: Como Admin puede ver los detalles de cada destino.
+- **Admin** -  Admin: Como Admin puede acceder a la página Sobre Nosotros.
+- **Admin** -  Admin: Como Admin puede acceder a crear un nuevo viaje. 
+- **Admin** -  Admin: Como Admin puede acceder a ver todos los viajes que ha creado
+- **Admin** -  Admin: Como Admin puede acceder al apartado de validacion de viajes
+- **Admin** -  Admin: Como Admin puede acceder al apartado de lista de usuarios y puede eliminar los usuarios.
+
+
 
 ## Backlog Functionalities
 
