@@ -79,25 +79,26 @@
       </div>
       <div class="dosbotones">
 
-        <button
+        <button style="width: 70px"
           type="submit"
           class="btn btn-primary editarDestinoBtn"
         >Actualizar</button>
-        <form
-          class="btn bnt-danger"
-          action="/destinos/{{this.destinoDetails._id}}/delete"
-          method="post"
-        >
-          <button
-            type="submit"
-            class="btn btn-primary editarDestinoBtn"
-          >Borrar</button>
-        </form>
       </div>
       {{#if this.errorMessage}}
         <p style="color: red">{{this.errorMessage}}</p>
       {{/if}}
     </form>
-
+    <div style="width: 525px">
+      <form
+        class="btn bnt-danger"
+        action="/destinos/{{this.destinoDetails._id}}/delete"
+        method="post"
+      >
+        <button style="width: 70px"
+          type="submit"
+          class="btn btn-primary editarDestinoBtn"
+        >Borrar</button>
+      </form>
+    </div>
   </div>
 </div>
